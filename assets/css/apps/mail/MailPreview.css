@@ -1,16 +1,19 @@
 .mail-preview-container{
+width: 100%;
 display: grid;
 grid-template-rows: 1fr;
-grid-template-columns: 150px 1fr 80px ;
+grid-template-columns: 200px 1fr 80px ;
 gap: 20px;
 
-
-
-;
-
-
 }
+
+
+
 .mail-preview-container .date-field{
 
     text-align: right;
+}
+
+.from-field, .date-field, .subject-field{
+    padding-top: 5px;
 }

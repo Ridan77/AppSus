@@ -1,5 +1,6 @@
 :root {
     --bg1: lightblue;
+    --bg4: rgb(227, 237, 241);
     --bg2: rgb(50, 160, 204);
     --bg3: rgb(89, 134, 206);
     
@@ -12,5 +13,6 @@
     --gray2: #888;
     --gray3: #333;
 
+    --white : #ffffff;
     --shortdelay: 0.3s;
 }

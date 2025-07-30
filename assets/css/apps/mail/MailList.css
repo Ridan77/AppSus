@@ -1,26 +1,39 @@
-.mail-index .list-container li{
-display: flex;
-    list-style: none;
-    align-items: center;
-    justify-content: space-between;
-    transition: var(--shortdelay);
+.mail-index .list-container li {
+  display: flex;
+  list-style: none;
+  /* align-items: center; */
+  justify-content: space-between;
+  transition: var(--shortdelay);
 }
 
-.mail-index .list-container button{
-opacity: 0;;
-transition: var(--shortdelay);
+.mail-index .list-container button {
+  opacity: 0;
+  transition: var(--shortdelay);
+  color: inherit;
+  background-color: none;
 }
 
-.mail-index .list-container li:hover button{
-opacity: 1;
+.mail-index .list-container li:hover button {
+  opacity: 1;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.mail-index .list-container li.read{
-background-color: var(--bg2);
+.mail-index .list-container li {
+  border: 1px solid var(--gray2);
+}
+.mail-index .list-container li.read {
+  /* padding: 2px; */
+  background-color: var(--bg4);
+  font-weight: 550;
 }
 
 .mail-index .list-container li:hover {
-  box-shadow: 1px 2px 5px var(--gray3)
+  box-shadow: 1px 2px 8px var(--gray3);
+}
 
+.btn-container {
+  margin: 5px;
+  width: auto;
+  display: flex;
+  gap: 10px;
 }
