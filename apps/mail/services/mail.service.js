@@ -18,7 +18,8 @@ export const mailService = {
     save,
     getEmptyMail,
     getDefaultFilter,
-    getFilterFromSearchParams
+    getFilterFromSearchParams,
+    toggleReadState,
 }
 
 
@@ -124,12 +125,20 @@ function _setNextPrevMailId(mail) {
     })
 }
 
+function toggleReadState(mailId) {
+    return get(mailId)
+        .then(mail => {
+            mail.isRead = !mail.isRead
+            save(mail)
+            return mail
+        })
 
+}
 
 
 
 function _mockData() {
-    return  [
+    return [
         {
             id: utilService.makeId(),
             createdAt: 1651133930500,

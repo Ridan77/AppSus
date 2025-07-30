@@ -1,3 +1,14 @@
 export function MailPreview({ mail }) {
-return <p>preview</p>
+  const { from, subject, sentAt, isRead } = mail;
+  return (
+    <table>
+      <tbody>
+        <tr>
+          <td style={{ width: "30px" }}>{from}</td>
+          <td>{subject}</td>
+          <td>{isRead}</td>
+        </tr>
+      </tbody>
+    </table>
+  );
 }
