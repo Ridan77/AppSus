@@ -8,8 +8,9 @@ export function MailList({ onRemoveMail, onToggleReadState, mails }) {
       {mails.map((mail) => (
         <li key={mail.id} className={mail.isRead ? 'read' : ''}>
           {<MailPreview mail={mail} />}
-          <div>
-            <button onClick={() => onRemoveMail(mail.id)}>Delete</button>
+          <div className="btn-container">
+            <i class="fa-solid fa-trash"></i>
+            <button  onClick={() => onRemoveMail(mail.id)}>Delete<i class="fa-solid fa-trash"></i></button>
             <button onClick={() => onToggleReadState(mail)}>
               {mail.isRead ? "Unread" : "Read"}
             </button>
