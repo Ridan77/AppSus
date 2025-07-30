@@ -20,7 +20,7 @@ export function MailIndex() {
   useEffect(() => {
     setSearchParams(utilService.getTruthyValues(filterBy));
     loadMails();
-  }, [filterBy,isReadStatus]);
+  }, [filterBy, isReadStatus]);
 
   function loadMails() {
     mailService
@@ -35,7 +35,7 @@ export function MailIndex() {
   }
 
   function onRemoveMail(mailId) {
-    console.log('removing ',mailId)
+    console.log("removing ", mailId);
     mailService
       .remove(mailId)
       .then(() => {
@@ -44,7 +44,8 @@ export function MailIndex() {
       })
       .catch((err) => {
         console.log("Problem deleting mail:", err);
-        showErrorMsg("Problem deleting mail!");      });
+        showErrorMsg("Problem deleting mail!");
+      });
   }
 
   function onSetFilterBy(filterByToEdit) {
@@ -52,19 +53,27 @@ export function MailIndex() {
   }
 
   function onToggleReadState(mail) {
-    const newMail={...mail,isRead:!mail.isRead}
-    mailService.save(newMail)
-      .then(()=>setIsReadStatus(!isReadStatus));
+    const newMail = { ...mail, isRead: !mail.isRead };
+    mailService.save(newMail).then(() => setIsReadStatus(!isReadStatus));
+  }
+
+  function getCountUnreadMails() {
+    if (!mails) return;
+    const numOfUnreadMails = mails.reduce((acc, item) => {
+      return (acc += item.isRead ? 1 : 0);
+    }, 0);
+    return numOfUnreadMails;
   }
 
   if (!mails) return <div className="loader">Loading...</div>;
   return (
     <section className="mail-index">
       {/* <button ><Link to={`/car/${car.prevCarId}`}>Prev Car</Link></button> */}
-      <button></button>
+      {/* <button></button> */}
       {/* <CarFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} /> */}
 
       <section className="list-container">
+        <h3>Un Read Mails: {getCountUnreadMails()}</h3>
         <MailList
           onRemoveMail={onRemoveMail}
           onToggleReadState={onToggleReadState}
