@@ -43,8 +43,7 @@ export function MailIndex() {
       })
       .catch((err) => {
         console.log("Problem deleting mail:", err);
-        showErrorMsg("Problem deleting mail!");
-      });
+        showErrorMsg("Problem deleting mail!");      });
   }
 
   function onSetFilterBy(filterByToEdit) {

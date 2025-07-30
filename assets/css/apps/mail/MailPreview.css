@@ -1,8 +1,16 @@
-.mail-index .list-container table{
-    text-align: left;
- 
-}
+.mail-preview-container{
+display: grid;
+grid-template-rows: 1fr;
+grid-template-columns: 150px 1fr 80px ;
+gap: 20px;
 
-.mail-index .list-container td{
-    text-align: left;
+
+
+;
+
+
+}
+.mail-preview-container .date-field{
+
+    text-align: right;
 }
