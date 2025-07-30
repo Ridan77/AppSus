@@ -1,3 +1,5 @@
+import { loadFromStorage, saveToStorage, makeId } from './util.service.js'
+
 export const storageService = {
     query,
     get,

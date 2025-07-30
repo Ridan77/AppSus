@@ -1,1 +1,22 @@
- /* note list */
+
+.note-list{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.container {
+    padding-inline: 10vw;
+}
+
+.note-list li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgb(175, 250, 255);
+}
+
