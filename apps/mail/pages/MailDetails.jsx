@@ -32,12 +32,17 @@ export function MailDetails() {
 
   return (
     <div>
-      <h1>Details</h1>
-      <p>From:{from}</p>
-      <p>To:{to}</p>
-      <p>Subject: {subject}</p>
-      <p>{body}</p>
-      <button onClick={onBack}>Back</button>
+      <div className="details-container">
+        <button onClick={onBack}>
+🔙
+        </button>
+        <h1>Mail:</h1>
+        <p>From:{from}</p>
+        <p>To:{to}</p>
+        <p>Subject: {subject}</p>
+        <p>{body}</p>
+        <button onClick={onBack}>Delete</button>
+      </div>
     </div>
   );
 }

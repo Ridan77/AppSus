@@ -1,0 +1,23 @@
+.details-container{
+    background-color: var(--gray1);
+    width: 80%;
+    margin: auto;
+}
+
+.details-container >*{
+margin-left: 10px;    
+}
+
+.details-container button {
+background-color: inherit;
+margin-left: 0;
+transition: var(--shortdelay);
+opacity: 0.4;
+
+}
+
+.details-container button:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  cursor: pointer;
+}
