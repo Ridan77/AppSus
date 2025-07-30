@@ -35,6 +35,7 @@ export function MailIndex() {
   }
 
   function onRemoveMail(mailId) {
+    console.log('removing ',mailId)
     mailService
       .remove(mailId)
       .then(() => {
@@ -59,6 +60,8 @@ export function MailIndex() {
   if (!mails) return <div className="loader">Loading...</div>;
   return (
     <section className="mail-index">
+      {/* <button ><Link to={`/car/${car.prevCarId}`}>Prev Car</Link></button> */}
+      <button></button>
       {/* <CarFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} /> */}
 
       <section className="list-container">

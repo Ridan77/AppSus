@@ -1,18 +1,29 @@
 const { Link } = ReactRouterDOM;
 import { MailPreview } from "../cmps/MailPreview.jsx";
 
+function onGoTo(link) {}
+
 export function MailList({ onRemoveMail, onToggleReadState, mails }) {
+  const unReadClass = "fa-solid fa-envelope-open";
+  const readClass = "fa-solid fa-envelope";
   if (!mails.length) return <div>No Mails To Show...</div>;
   return (
     <ul>
       {mails.map((mail) => (
-        <li key={mail.id} className={mail.isRead ? 'read' : ''}>
+        <li key={mail.id} className={mail.isRead ? "read" : ""}>
           {<MailPreview mail={mail} />}
+
           <div className="btn-container">
-            <i class="fa-solid fa-trash"></i>
-            <button  onClick={() => onRemoveMail(mail.id)}>Delete<i class="fa-solid fa-trash"></i></button>
+            <button onClick={() => onRemoveMail(mail.id)}>
+              <i className="fa-solid fa-trash"></i>
+            </button>
             <button onClick={() => onToggleReadState(mail)}>
-              {mail.isRead ? "Unread" : "Read"}
+              <i className={mail.isRead ? unReadClass : readClass}></i>
+            </button>
+            <button>
+              <Link to={`/mail/${mail.id}`}>
+              <i className="fa-regular fa-share-from-square"></i>
+              </Link>
             </button>
           </div>
         </li>
