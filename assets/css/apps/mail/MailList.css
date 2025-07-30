@@ -1,1 +1,15 @@
- /* mail list */
+.mail-index .list-container li{
+display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mail-index .list-container button{
+opacity: 0;;
+transition: var(--shortdelay);
+}
+
+.mail-index .list-container li:hover button{
+opacity: 1;
+}

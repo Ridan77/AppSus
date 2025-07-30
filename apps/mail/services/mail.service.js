@@ -4,7 +4,6 @@ import { utilService } from '../../../services/util.service.js'
 
 
 const MAIL_KEY = 'mailDB'
-console.log('Hi')
 _createMails()
 
 const loggedinUser = {
@@ -89,9 +88,7 @@ function getDefaultFilter() {
 
 
 function _createMails() {
-    console.log('before')
     let mails = utilService.loadFromStorage(MAIL_KEY) || []
-    console.log('agter')
     if (!mails || !mails.length) {
         mails = _mockData()
         utilService.saveToStorage(MAIL_KEY, mails)

@@ -1,7 +1,68 @@
-import { mailService } from "../services/mail.service.js"
+import { mailService } from "../services/mail.service.js";
+import { showErrorMsg, showSuccessMsg} from "../../../services/event-bus.service.js";
+import { utilService } from "../../../services/util.service.js";
+import { MailList } from "../cmps/MailList.jsx";
+
+const { useState, useEffect } = React;
+const { Link, useSearchParams } = ReactRouterDOM;
 
 export function MailIndex() {
-    mailService.get('^&^&^')
-    return <section className="container">Mail app</section>
-}
+  const [mails, setMails] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [filterBy, setFilterBy] = useState(
+    mailService.getFilterFromSearchParams(searchParams)
+  );
 
+  useEffect(() => {
+    setSearchParams(utilService.getTruthyValues(filterBy));
+    loadMails();
+  }, [filterBy]);
+
+  function loadMails() {
+    mailService
+      .query(filterBy)
+      .then((mails) => setMails(mails))
+      .catch((err) => {
+        console.log("err:", err);
+        showErrorMsg("Cannot get cars!");
+      });
+  }
+
+  function onRemoveMail(mailId) {
+    mailService
+      .remove(mailId)
+      .then(() => {
+        setMails((prevMails) => prevMails.filter((mail) => mail.id !== mailId));
+        showSuccessMsg(`Mail (${mailId}) deleted successfully from trash!`);
+      })
+      .catch((err) => {
+        console.log("Problem deleting mail:", err);
+        showErrorMsg("Problem deleting mail!");
+      });
+  }
+
+  function onSetFilterBy(filterByToEdit) {
+    setFilterBy({ ...filterByToEdit });
+  }
+  function onToggleReadState(){
+        mailService
+      .toggleReadState(mailId)
+      .then(() => {
+        setMails((prevMails) => prevMails);
+      })
+      .catch((err) => {
+        console.log("Problem deleting mail:", err);
+      });
+  }
+
+  if (!mails) return <div className="loader">Loading...</div>;
+  return (
+    <section className="mail-index">
+      {/* <CarFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} /> */}
+
+      <section className="list-container">
+        <MailList onRemoveMail={onRemoveMail}  onToggleReadState={onToggleReadState} mails={mails} />
+      </section>
+    </section>
+  );
+}
