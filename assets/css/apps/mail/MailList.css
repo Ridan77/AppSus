@@ -22,8 +22,9 @@
   border: 1px solid var(--gray2);
 }
 .mail-index .list-container li.read {
-  padding: 2px;
+  /* padding: 2px; */
   background-color: var(--bg4);
+  font-weight: 550;
 }
 
 .mail-index .list-container li:hover {

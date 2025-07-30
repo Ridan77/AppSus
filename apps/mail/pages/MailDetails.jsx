@@ -33,10 +33,14 @@ export function MailDetails() {
   return (
     <div>
       <div className="details-container">
-        <button onClick={onBack}>
-🔙
+        
+
+
+
+        <button onClick={onBack}> 
+    <i class="fa-regular fa-circle-xmark"></i>
         </button>
-        <h1>Mail:</h1>
+        <h3>Mail:</h3>
         <p>From:{from}</p>
         <p>To:{to}</p>
         <p>Subject: {subject}</p>
