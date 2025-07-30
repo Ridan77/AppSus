@@ -15,6 +15,8 @@ function saveToStorage(key, val) {
 }
 
 function loadFromStorage(key) {
+        console.log('before')
+
     const val = localStorage.getItem(key)
     return JSON.parse(val)
 }
