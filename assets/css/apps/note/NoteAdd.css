@@ -1,0 +1,18 @@
+
+.note-add-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    
+}
+
+.note-add-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: #ffffff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}

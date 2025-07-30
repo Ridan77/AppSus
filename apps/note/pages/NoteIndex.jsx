@@ -1,6 +1,7 @@
 import { NoteList } from "../cmps/NoteList.jsx"
 import { noteService } from "../services/note.service.js"
 import { showErrorMsg, showSuccessMsg} from "../../../services/event-bus.service.js"
+import { NoteAdd } from "../cmps/NoteAdd.jsx"
 
 const { useState, useEffect } = React
 const { Link, useSearchParams } = ReactRouterDOM
@@ -41,15 +42,26 @@ export function NoteIndex() {
         setFilterBy({ ...filterByToEdit })
     }
 
+    function onAddNote(noteData) {
+        const newNote = noteService.getEmptyNote(noteData.title, noteData.type)
+        noteService.save(newNote)
+            .then(savedNote => {
+                setNotes(prevNotes => [...prevNotes, savedNote])
+                showSuccessMsg(`Note added!`)
+            })
+            .catch(err => {
+                console.log('Error adding note:', err)
+                showErrorMsg('Problem adding note!')
+            })
+    }
+
 
     if (!notes) return <div className="loader">Loading...</div>
     return (
         <section className="note-index">
             {/*<NoteFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />*/}
 
-            <section>
-                {/*<Link to="/note/edit">Add Note</Link>*/}
-            </section>
+            <NoteAdd onAddNote={onAddNote} />
             <NoteList onRemoveNote={onRemoveNote} notes={notes} />
         </section>
     )

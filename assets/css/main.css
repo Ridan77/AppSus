@@ -8,8 +8,11 @@
 @import './cmps/UserMsg.css';
 @import './cmps/AppHeader.css';
 
+
 @import './apps/note/NoteIndex.css';
 @import './apps/note/NoteList.css';
+@import './apps/note/NoteAdd.css';
+
 @import './apps/mail/MailIndex.css';
 @import './apps/mail/MailList.css';
 @import './apps/mail/MailPreview.css';

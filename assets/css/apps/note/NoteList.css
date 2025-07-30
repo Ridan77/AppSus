@@ -4,6 +4,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 15px;
+    height: 100vh;
+    margin-block-start: 0;
 }
 
 .container {
@@ -16,7 +18,16 @@
     justify-content: space-around;
     align-items: center;
     padding: 15px;
+    border: 1px solid var(--gray1);
     border-radius: 10px;
     background-color: rgb(175, 250, 255);
+    height: 200px;
 }
 
+.handle-note-btns {
+    
+}
+
+.note-list li:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}

@@ -16,7 +16,7 @@ export function NoteList({ notes, onRemoveNote }) {
             {notes.map(note => (
                 <li key={note.id}>
                     <NotePreview note={note} />
-                    <section>
+                    <section className="handle-note-btns">
                         <button onClick={() => onRemoveNote(note.id)}>
                             Remove
                         </button>
