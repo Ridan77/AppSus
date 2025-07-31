@@ -1,20 +1,13 @@
-const { Link } = ReactRouterDOM
 
 import { NotePreview } from "./NotePreview.jsx";
 
 export function NoteList({ notes, onRemoveNote }) {
 
-    const listAttrs = {
-        className: 'note-list container',
-        title: 'Hello NoteList!',
-        onClick: () => { console.log('List Clicked!') }
-    }
-
     if (!notes.length) return <div>No Notes To Show...</div>
     return (
-        <ul {...listAttrs}>
+        <ul className="note-list container">
             {notes.map(note => (
-                <li key={note.id}>
+                <li key={note.id} className="note-card" style={{ backgroundColor: note.style && note.style.backgroundColor || '#fff' }}>
                     <NotePreview note={note} />
                     <section className="handle-note-btns">
                         <button onClick={() => onRemoveNote(note.id)}>
