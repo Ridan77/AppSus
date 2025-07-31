@@ -10,9 +10,33 @@
 .note-add-container form {
     display: flex;
     flex-direction: column;
-    gap: 5px;
     background: #ffffff;
-    padding: 20px 25px;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+    width: 500px;
+}
+
+.note-add-container input {
+    border: none;
+}
+
+.note-add-container input:focus {
+    outline: none;
+}
+
+.note-add-container .title-input {
+    font-size: 22px;
+    padding: 16px 16px 0 16px;
+}
+
+.note-add-container .body-input {
+    font-size: 16px;
+    padding: 12px 16px 12px 16px;
+}
+
+.note-add-container .handle-note-type {
+    display: flex;
+    gap: 10px;
+    margin: 4px 16px;
 }

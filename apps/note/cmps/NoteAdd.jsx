@@ -8,6 +8,10 @@ export function NoteAdd({ onAddNote }) {
         setNoteToAdd(prevNote => ({ ...prevNote, [name]: value }))
     }
 
+    function handleTypeSelect(type) {
+        setNoteToAdd({ type, content: ''})
+    }
+
     function handleSubmit(ev) {
         ev.preventDefault()
         if (!noteToAdd.title || !noteToAdd.type) return
@@ -18,21 +22,27 @@ export function NoteAdd({ onAddNote }) {
     return (
         <section className="note-add-container">
             <form onSubmit={handleSubmit}>
-                <input
+                <input className="title-input"
                     type="text"
                     name="title"
-                    placeholder="Note header..."
+                    placeholder="Title"
                     value={noteToAdd.title}
                     onChange={handleChange}
                 />
-                <input
+                <input className="body-input"
                     type="text"
                     name="type"
-                    placeholder="Note body..."
+                    placeholder="Take a note..."
                     value={noteToAdd.type}
                     onChange={handleChange}
                 />
-                <button>Add</button>
+                <section className="handle-note-type">
+                    <button>+</button>
+                    <button>text</button>
+                    <button>image</button>
+                    <button>video</button>
+                    <button>list</button>
+                </section>
             </form>
         </section>
     )
