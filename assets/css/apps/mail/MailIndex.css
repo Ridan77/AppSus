@@ -1,5 +1,6 @@
 .mail-index{
     background-color: var(--bg5);
+    min-height: 80vh;
 }
 
 .newmail-filter-container{
@@ -23,6 +24,6 @@ align-items: center;
 
 .list-sidenav-container{
 display: grid;
-grid-template-columns: 100px 1fr;
+grid-template-columns: 150px 1fr;
 margin-top: 20px;
  }

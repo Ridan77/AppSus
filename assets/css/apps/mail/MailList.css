@@ -4,6 +4,7 @@
 
 .mail-index .list-container ul {
   margin: 0;
+  margin-block-start: 0;
 }
 .mail-index .list-container li {
   display: flex;
