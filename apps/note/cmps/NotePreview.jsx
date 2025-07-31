@@ -13,13 +13,13 @@ const dynamicCmps = {
 
 
 
-export function NotePreview({ note }) {
-
+export function NotePreview({ note, style }) {
     const { type, info } = note
     const DynamicCmp = dynamicCmps[type]
+    if (!DynamicCmp || !info) return null
 
     return (
-        <article className="note-preview">
+        <article className="note-preview" style={style}>
             {DynamicCmp && <DynamicCmp info={info} />}
         </article>
     )

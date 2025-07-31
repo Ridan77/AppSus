@@ -61,6 +61,18 @@ export function NoteAdd({ onAddNote }) {
         }
     }
 
+    function handleImageUpload(ev) {
+        const file = ev.target.files[0]
+        if (!file) return
+
+        const reader = new FileReader()
+        reader.onloadend = () => {
+            setNoteToAdd(prev => ({ ...prev, content: reader.result }))
+        }
+        reader.readAsDataURL(file)
+    }
+
+
     return (
 
         <section className="note-add-container">
@@ -83,7 +95,13 @@ export function NoteAdd({ onAddNote }) {
                     />
                 )}
 
-                {(noteToAdd.type === 'NoteTxt' || noteToAdd.type === 'NoteTodos') && (
+                {noteToAdd.type === 'NoteImg' ? (
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                    />
+                ) : (
                     <input
                         className="body-input"
                         type="text"
@@ -94,39 +112,9 @@ export function NoteAdd({ onAddNote }) {
                     />
                 )}
 
-                {noteToAdd.type && <button type="submit">Add</button>}
+
+                {noteToAdd.type && <button type="submit" style={{backgroundColor: 'rgba(255, 255, 255, 1)', border: 'none'}}>Add</button>}
             </form>
         </section>
     )
 }
-
-
-        {/*
-        <section className="note-add-container">
-            <form onSubmit={handleSubmit}>
-                <input className="title-input"
-                    type="text"
-                    name="title"
-                    placeholder="Title"
-                    value={noteToAdd.title}
-                    onChange={handleChange}
-                />
-                <input className="body-input"
-                    type="text"
-                    name="type"
-                    placeholder="Take a note..."
-                    value={noteToAdd.type}
-                    onChange={handleChange}
-                />
-                <section className="handle-note-type">
-                    <button>+</button>
-                    <button>text</button>
-                    <button>image</button>
-                    <button>video</button>
-                    <button>list</button>
-                </section>
-            </form>
-        </section>
-    )
-    */}
-

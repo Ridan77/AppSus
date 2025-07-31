@@ -32,7 +32,7 @@ function query(filterBy = {}) {
 }
 
 function get(noteId) {
-    return storageService.get(NOTE_KEY, noteId).then(_setNextPrevNoteId)
+    return storageService.get(NOTE_KEY, noteId).then()
 }
 
 function remove(noteId) {
@@ -68,7 +68,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: true,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: '#1A73E8'
                 },
                 info: {
                     txt: 'Fullstack Me Baby!'
@@ -84,7 +84,7 @@ function _createNotes() {
                     title: 'Bobi and Me'
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: '#1A73E8'
                 }
             },
             {

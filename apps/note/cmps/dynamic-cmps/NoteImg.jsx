@@ -1,9 +1,10 @@
 
 export function NoteImg({ info }) {
     return (
-        <div>
+        <div className="note-img">
             <h2>{info.title}</h2>
-            <p>(Image would be here: {info.url})</p>
+            <img src={info.url} alt={info.title} style={{ width: '240px', objectFit: 'cover' }} />
         </div>
     )
 }
+

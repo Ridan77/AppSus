@@ -1,11 +1,15 @@
 
 export function NoteTxt({ info }) {
-    if (!info || !info.txt) return <p>Empty text</p>
+    if (!info || !info.txt) return 
 
     return (
-        <div className="note-txt">
-            <h2>{info.title}</h2>
-            <p>{info.txt}</p>
+        <div>
+            <div className="note-title">
+                <h2>{info.title}</h2>
+            </div>
+            <div className="note-body">
+                <p>{info.txt}</p>
+            </div>
         </div>
     )
 }
