@@ -5,6 +5,7 @@ import {
 } from "../../../services/event-bus.service.js";
 import { utilService } from "../../../services/util.service.js";
 import { MailList } from "../cmps/MailList.jsx";
+import { MailFilter } from "../cmps/MailFilter.jsx";
 
 const { useState, useEffect } = React;
 const { Link, useSearchParams,Outlet} = ReactRouterDOM;
@@ -67,7 +68,7 @@ export function MailIndex() {
   if (!mails) return <div className="loader">Loading...</div>;
   return (
     <section className="mail-index">
-      {/* <CarFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} /> */}
+      <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
       <section style={{ marginTop: "10px" }} className="new-mail-container">
        <button>
         <Link to="/mail/edit">Compose</Link>

@@ -104,10 +104,10 @@ function _createMail() {
 
 function getFilterFromSearchParams(searchParams) {
     const txt = searchParams.get('txt') || ''
-    const Body = searchParams.get('Body') || ''
+    const folder = searchParams.get('folder') || ''
     return {
         txt,
-        Body
+        folder,
     }
 }
 

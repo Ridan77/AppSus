@@ -85,3 +85,32 @@ export function getTruthyValues(obj) {
     }
     return newObj
 }
+
+
+export function animateCSS(el, animation = 'bounce', options = {}) {
+    const prefix = 'animate__'
+    const { isRemoveAnimation = true } = options
+    return new Promise((resolve, reject) => {
+        const animationName = `${prefix}${animation}`
+        el.classList.add(`${prefix}animated`, animationName)
+
+        function handleAnimationEnd(event) {
+            event.stopPropagation()
+            if (isRemoveAnimation) el.classList.remove(`${prefix}animated`, animationName)
+            resolve('Animation ended')
+        }
+
+        el.addEventListener('animationend', handleAnimationEnd, { once: true })
+    })
+}
+
+
+export function debounce(func, delay) {
+    let timeoutId
+    return (...args) => {
+        clearTimeout(timeoutId)
+        timeoutId = setTimeout(() => {
+            func(...args)
+        }, delay)
+    }
+}
