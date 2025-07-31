@@ -8,10 +8,11 @@ font-family: Roboto-Bold;
 
 
 .mail-edit {
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   width: max-content;
+  height: 50%;
   background-color: var(--bg5);
 }
 
@@ -21,11 +22,12 @@ font-family: Roboto-Bold;
 
 .mail-edit form {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  grid-template-rows: 20px 20px 20px 1fr 130px;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 20px 20px 20px 1fr 130px ;
   align-items: start;
   font-size: 1rem;
   width: 100%;
+  height: 100%;
   gap: 10px;
   margin: auto;
 }
@@ -51,6 +53,8 @@ margin-left: 10px;
   grid-column: 2;
 border: none;
   height: 100px;
+  font-family: Roboto;
+  font-size: 1em
 }
 
 
@@ -62,11 +66,11 @@ border: none;
     background-color: inherit;
 }
 .send-button{
-    align-self: flex-end;
     background-color:var(--color1) ;
     color: var(--white);
     border-radius: 1em;
-    height: 2em;
+    width: 7em;
+    height: 3em;
     font-family: Roboto;
     border: none;
 }
