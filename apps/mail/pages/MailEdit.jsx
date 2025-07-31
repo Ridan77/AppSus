@@ -4,14 +4,14 @@ import {
   showSuccessMsg,
 } from "../../../services/event-bus.service.js";
 const { useEffect } = React;
-const { useNavigate, useParams, Link } = ReactRouterDOM;
+const { useNavigate, useParams, Link,useOutletContext } = ReactRouterDOM;
 
 const { useState } = React;
 
 export function MailEdit() {
   const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail());
   const [isLoading, setIsLoading] = useState(false);
-
+  const { onUpdateMail } = useOutletContext();
   const navigate = useNavigate();
   const { mailId } = useParams();
   console.log("inside edit");
@@ -46,10 +46,11 @@ export function MailEdit() {
 
   function onSaveMail(ev) {
     ev.preventDefault();
-    mailToEdit.sentAt=  Date.now()
+    mailToEdit.sentAt = Date.now();
     mailService
       .save(mailToEdit)
-      .then(() => {
+      .then((newMail) => {
+        onUpdateMail(newMail)
         showSuccessMsg("Mail saved successfuly");
         navigate("/mail");
       })

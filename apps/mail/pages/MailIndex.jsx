@@ -36,19 +36,29 @@ export function MailIndex() {
       });
   }
 
-  function onRemoveMail(mailId) {
-    mailService
-      .get(mailId)
-      .then((mail) => {
-        if (mail.removedAt) removeMail(mailId);
-        else mailService.moveToTrash(mailId);
-      })
-      .catch((err) => {
-        console.log("Problem deleting mail:", err);
-        showErrorMsg("Problem deleting mail!");
-      }).finally(loadMails())
+  function onRemoveMail(mail) {
+    if (mail.removedAt) removeMail(mail.id);
+    else {
+      mailService.moveToTrash(mail).then((newMail) => {
+        console.log("Inside then");
+        onUpdateMail(newMail);
+      });
+    }
   }
 
+  function onUpdateMail(newMail) {
+    console.log(newMail);
+    const idx = mails.findIndex((item) => item.id === newMail.id);
+    if (idx !== -1) {
+      console.log("Inside update");
+
+      setMails((prevMails) =>
+        prevMails.filter((mail) => mail.id !== newMail.id)
+      );
+    } else setMails((prevMails) => [...prevMails, newMail]);
+  }
+
+  console.log("render");
   function removeMail(mailId) {
     mailService
       .remove(mailId)
@@ -102,7 +112,7 @@ export function MailIndex() {
           />
         </section>
       </section>
-      <Outlet />
+      <Outlet context={{onUpdateMail}}/>
     </section>
   );
 }

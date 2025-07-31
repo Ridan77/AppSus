@@ -153,14 +153,12 @@ function toggleReadState(mailId) {
 
 }
 
-function moveToTrash(mailId){
-    return get(mailId)
-        .then(mail=>{
-            mail.removedAt= Date.now()
-            save(mail)
-            return mail
-        })
+function moveToTrash(mail) {
+    mail.removedAt = Date.now()
+    return save(mail)
+    
 }
+
 
 
 function _mockData() {

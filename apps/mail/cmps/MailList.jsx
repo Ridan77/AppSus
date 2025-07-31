@@ -14,7 +14,7 @@ export function MailList({ onRemoveMail, onToggleReadState, mails }) {
           {<MailPreview mail={mail} />}
 
           <div className="btn-container">
-            <button onClick={() => onRemoveMail(mail.id)}>
+            <button onClick={() => onRemoveMail(mail)}>
               <i className="fa-solid fa-trash"></i>
             </button>
             <button onClick={() => onToggleReadState(mail)}>
