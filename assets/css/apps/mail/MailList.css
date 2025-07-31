@@ -8,12 +8,12 @@
 .mail-index .list-container li {
   display: flex;
   list-style: none;
-  height: 30px;
+  height: 35px;
   justify-content: space-between;
   transition: var(--shortdelay);
 }
 
-.mail-index .list-container button {
+.mail-index .list-container .btn-container button {
   opacity: 0;
   transition: var(--shortdelay);
   color: inherit;
@@ -27,7 +27,7 @@
 }
 
 .mail-index .list-container li {
-  border-bottom: 1px solid var(--gray2);
+  border-bottom: 2px solid var(--grey4);
 }
 
 .mail-index .list-container li.read {

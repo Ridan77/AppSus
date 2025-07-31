@@ -50,7 +50,9 @@ function query(filterBy = {}) {
                             .filter(mail => mail.sentAt)
                         break
                     case 'starred':
-                        console.log('starred')
+                        console.log('starred', filterBy)
+                        mails = mails.filter(mail => mail.isStared)
+
                         break
                     case 'sent':
                         mails = mails.filter(mail => mail.from === loggedinUser.email)
@@ -101,7 +103,8 @@ function getEmptyMail() {
         sentAt: null,
         removedAt: null,
         from: '',
-        to: ''
+        to: '',
+        isStared: false
     }
     return mail
 }
@@ -156,7 +159,7 @@ function toggleReadState(mailId) {
 function moveToTrash(mail) {
     mail.removedAt = Date.now()
     return save(mail)
-    
+
 }
 
 
@@ -172,7 +175,9 @@ function _mockData() {
             sentAt: 1651133930594,
             removedAt: null,
             from: 'hr@company.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -183,7 +188,9 @@ function _mockData() {
             sentAt: 1651145930594,
             removedAt: null,
             from: 'user@appsus.com',
-            to: 'jane.doe@gmail.com'
+            to: 'jane.doe@gmail.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -194,7 +201,9 @@ function _mockData() {
             sentAt: 1651157930594,
             removedAt: null,
             from: 'reception@smileclinic.org',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -205,7 +214,9 @@ function _mockData() {
             sentAt: 1651169930594,
             removedAt: null,
             from: 'jane.doe@gmail.com',
-            to: 'david@friendsmail.com'
+            to: 'david@friendsmail.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -216,7 +227,9 @@ function _mockData() {
             sentAt: null,
             removedAt: null,
             from: 'alerts@securemail.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStared: false,
+
         },
         {
             id: utilService.makeId(),
@@ -227,7 +240,9 @@ function _mockData() {
             sentAt: 1651193930594,
             removedAt: null,
             from: 'events@company.com',
-            to: 'admin@corpnet.com'
+            to: 'admin@corpnet.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -238,7 +253,9 @@ function _mockData() {
             sentAt: 1651205930594,
             removedAt: null,
             from: 'manager@teamhub.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -249,7 +266,9 @@ function _mockData() {
             sentAt: 1651217930594,
             removedAt: null,
             from: 'booking@flyaway.com',
-            to: 'you@example.com'
+            to: 'you@example.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -260,7 +279,9 @@ function _mockData() {
             sentAt: 1651229930594,
             removedAt: null,
             from: 'deals@bestbuy.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -271,7 +292,9 @@ function _mockData() {
             sentAt: 1651241930594,
             removedAt: null,
             from: 'user@appsus.com',
-            to: 'friend@mailme.com'
+            to: 'friend@mailme.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -282,7 +305,9 @@ function _mockData() {
             sentAt: 1651253930594,
             removedAt: null,
             from: 'billing@streamplus.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -293,7 +318,9 @@ function _mockData() {
             sentAt: 1651265930594,
             removedAt: null,
             from: 'tommy@gmail.com',
-            to: 'danny@buddies.org'
+            to: 'danny@buddies.org',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -304,7 +331,9 @@ function _mockData() {
             sentAt: 1651277930594,
             removedAt: null,
             from: 'support@webapp.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -315,7 +344,9 @@ function _mockData() {
             sentAt: 1651289930594,
             removedAt: 1651289930594,
             from: 'finance@agency.com',
-            to: 'billing@freelancehost.com'
+            to: 'billing@freelancehost.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -326,7 +357,9 @@ function _mockData() {
             sentAt: 1651301930594,
             removedAt: null,
             from: 'noreply@reviewcenter.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -337,7 +370,9 @@ function _mockData() {
             sentAt: 1651313930594,
             removedAt: null,
             from: 'sara.brown@yahoo.com',
-            to: 'mike@neighbormail.com'
+            to: 'mike@neighbormail.com',
+            isStared: true
+
         },
         {
             id: utilService.makeId(),
@@ -348,7 +383,9 @@ function _mockData() {
             sentAt: 1651325930594,
             removedAt: null,
             from: 'colleague@remotehub.io',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStared: true
+
         },
         {
             id: utilService.makeId(),
@@ -359,7 +396,9 @@ function _mockData() {
             sentAt: 1651337930594,
             removedAt: null,
             from: 'photos@pixit.com',
-            to: 'gallery@picsync.net'
+            to: 'gallery@picsync.net',
+            isStared: true
+
         },
         {
             id: utilService.makeId(),
@@ -370,7 +409,9 @@ function _mockData() {
             sentAt: 1651349930594,
             removedAt: null,
             from: 'rachel@designco.net',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            isStared: false
+
         },
         {
             id: utilService.makeId(),
@@ -381,7 +422,9 @@ function _mockData() {
             sentAt: 1651361930594,
             removedAt: null,
             from: 'friends@partygroup.com',
-            to: 'wishes@inbox.me'
+            to: 'wishes@inbox.me',
+            isStared: false
+
         }
     ]
 

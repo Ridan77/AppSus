@@ -2,7 +2,7 @@
 width: 100%;
 display: grid;
 grid-template-rows: 1fr;
-grid-template-columns: 200px 1fr 90px ;
+grid-template-columns:30px 200px 1fr 90px ;
 gap: 20px;
 
 }
@@ -25,4 +25,13 @@ gap: 20px;
  .subject-field span{
    margin-left: 40px;
    font-size: .8em;
+}
+
+.star-button{
+background-color:inherit;
+border: none;
+}
+
+.star-button:not(.stared){
+filter: grayscale(100%);
 }

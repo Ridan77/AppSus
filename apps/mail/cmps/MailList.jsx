@@ -1,7 +1,6 @@
 const { Link, useNavigate } = ReactRouterDOM;
 import { MailPreview } from "../cmps/MailPreview.jsx";
 
-function onGoTo(link) {}
 
 export function MailList({ onRemoveMail, onToggleReadState, mails }) {
   const unReadClass = "fa-solid fa-envelope-open";
