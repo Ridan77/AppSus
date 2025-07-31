@@ -7,7 +7,8 @@ import { About } from "./pages/About.jsx";
 import { Home } from "./pages/Home.jsx";
 import { MailIndex } from "./apps/mail/pages/MailIndex.jsx";
 import { NoteIndex } from "./apps/note/pages/NoteIndex.jsx";
-import { MailDetails } from "./apps/mail/pages/MailDetails.jsx"
+import { MailDetails } from "./apps/mail/pages/MailDetails.jsx";
+import { MailEdit } from "./apps/mail/pages/MailEdit.jsx";
 
 export function RootCmp() {
   return (
@@ -19,7 +20,8 @@ export function RootCmp() {
           <Route path="/about" element={<About />} />
           <Route path="/mail/:mailId" element={<MailDetails />} />
           <Route path="/mail" element={<MailIndex />}>
-            {/* <Route path="/mail/compose" element={<MailCompose />} /> */}
+            <Route path="/mail/edit" element={<MailEdit />} />
+            <Route path="/mail/edit/:carId" element={<MailEdit />} />
           </Route>
           <Route path="/note" element={<NoteIndex />} />
         </Routes>

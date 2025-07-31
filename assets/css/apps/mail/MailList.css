@@ -1,7 +1,7 @@
 .mail-index .list-container li {
   display: flex;
   list-style: none;
-  /* align-items: center; */
+
   justify-content: space-between;
   transition: var(--shortdelay);
 }
@@ -21,10 +21,13 @@
 .mail-index .list-container li {
   border: 1px solid var(--gray2);
 }
+
 .mail-index .list-container li.read {
   /* padding: 2px; */
   background-color: var(--bg4);
-  font-weight: 550;
+  /* font-style: italic; */
+  overflow-wrap: break-word;
+  height: 30px;
 }
 
 .mail-index .list-container li:hover {

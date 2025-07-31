@@ -3,6 +3,7 @@ export function MailPreview({ mail }) {
   const date = new Date(sentAt);
   const dateFormatted = `${date.getDay()}/
   ${date.getDate()}/${date.getFullYear()}`;
+
   return (
     <div className="mail-preview-container">
         <div className="from-field">{from}</div>

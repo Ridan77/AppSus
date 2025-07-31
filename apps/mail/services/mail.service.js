@@ -55,7 +55,6 @@ function get(mailId) {
 }
 
 function remove(mailId) {
-    // return Promise.reject('Oh No!')
     return storageService.remove(MAIL_KEY, mailId)
 }
 
@@ -70,7 +69,7 @@ function save(mail) {
 function getEmptyMail() {
 
     const mail = {
-        createdAt: Date.now(),
+        createdAt:  Date.now(),
         subject: '',
         body: '',
         isRead: false,

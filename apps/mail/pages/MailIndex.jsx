@@ -7,7 +7,7 @@ import { utilService } from "../../../services/util.service.js";
 import { MailList } from "../cmps/MailList.jsx";
 
 const { useState, useEffect } = React;
-const { Link, useSearchParams } = ReactRouterDOM;
+const { Link, useSearchParams,Outlet} = ReactRouterDOM;
 
 export function MailIndex() {
   const [mails, setMails] = useState(null);
@@ -35,7 +35,6 @@ export function MailIndex() {
   }
 
   function onRemoveMail(mailId) {
-    console.log("removing ", mailId);
     mailService
       .remove(mailId)
       .then(() => {
@@ -68,18 +67,21 @@ export function MailIndex() {
   if (!mails) return <div className="loader">Loading...</div>;
   return (
     <section className="mail-index">
-      {/* <button ><Link to={`/car/${car.prevCarId}`}>Prev Car</Link></button> */}
-      {/* <button></button> */}
       {/* <CarFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} /> */}
-
+      <section style={{ marginTop: "10px" }} className="new-mail-container">
+       <button>
+        <Link to="/mail/edit">Compose</Link>
+       </button>
+     </section>
+      <h3>Un Read Mails: {getCountUnreadMails()}</h3>
       <section className="list-container">
-        <h3>Un Read Mails: {getCountUnreadMails()}</h3>
         <MailList
           onRemoveMail={onRemoveMail}
           onToggleReadState={onToggleReadState}
           mails={mails}
         />
       </section>
+    <Outlet/>
     </section>
   );
 }
