@@ -1,0 +1,7 @@
+.mail-search-filter-container .search-input{
+height: 40px;
+border-radius: 16px;
+background-color: var(--readitem);
+border: none;
+
+}

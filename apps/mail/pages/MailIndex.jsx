@@ -36,17 +36,23 @@ export function MailIndex() {
       });
   }
 
-  function onRemoveMail(mailId) {
-    mailService
-      .get(mailId)
-      .then((mail) => {
-        if (mail.removedAt) removeMail(mailId);
-        else mailService.moveToTrash(mailId);
-      })
-      .catch((err) => {
-        console.log("Problem deleting mail:", err);
-        showErrorMsg("Problem deleting mail!");
-      }).finally(loadMails())
+  function onRemoveMail(mail) {
+    if (mail.removedAt) removeMail(mail.id);
+    else {
+      mailService.moveToTrash(mail).then((newMail) => {
+        showSuccessMsg('Email moved to Trash')
+        onUpdateMail(newMail);
+      });
+    }
+  }
+
+  function onUpdateMail(newMail) {
+    const idx = mails.findIndex((item) => item.id === newMail.id);
+    if (idx !== -1) {
+      setMails((prevMails) =>
+        prevMails.filter((mail) => mail.id !== newMail.id)
+      );
+    } else setMails((prevMails) => [...prevMails, newMail]);
   }
 
   function removeMail(mailId) {
@@ -69,11 +75,15 @@ export function MailIndex() {
     const newMail = { ...mail, isRead: !mail.isRead };
     mailService.save(newMail).then(() => setIsReadStatus(!isReadStatus));
   }
+  function onToggleStarState(mail) {
+    const newMail = { ...mail, isStared: !mail.isStared };
+    mailService.save(newMail).then(() => setIsReadStatus(!isReadStatus));
+  }
 
   function getCountUnreadMails() {
     if (!mails) return;
     const numOfUnreadMails = mails.reduce((acc, item) => {
-      return (acc += item.isRead ? 1 : 0);
+      return (acc += item.isRead ? 0 : 1);
     }, 0);
     return numOfUnreadMails;
   }
@@ -81,7 +91,7 @@ export function MailIndex() {
   if (!mails) return <div className="loader">Loading...</div>;
   return (
     <section className="mail-index">
-      <section className="newmail-filter=container">
+      <section className="newmail-filter-container">
         <button>
           <Link to="/mail/edit">Compose</Link>
         </button>
@@ -98,11 +108,12 @@ export function MailIndex() {
           <MailList
             onRemoveMail={onRemoveMail}
             onToggleReadState={onToggleReadState}
+            onToggleStarState={onToggleStarState}
             mails={mails}
           />
         </section>
       </section>
-      <Outlet />
+      <Outlet context={{onUpdateMail}}/>
     </section>
   );
 }

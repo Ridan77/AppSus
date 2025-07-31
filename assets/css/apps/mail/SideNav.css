@@ -1,13 +1,23 @@
-.sidebar-container button{
-border: none;
-background-color: inherit;
-display: block;
-margin: auto;
-margin-bottom: 30px ;
-transition: var(--shortdelay);
+.sidebar-container button {
+  border: none;
+  background-color: var(--bg5);
+  display: block;
+  margin: auto;
+  padding: 10px 5px;
+  margin: 10px;
+  transition: var(--shortdelay);
+  font-family: Roboto-Bold;
+  font-size: 1em;
+  border-radius: 1em;
+  width: 100%;
 
 }
 
-.sidebar-container button:hover{
-cursor: pointer;
+.sidebar-container button:hover {
+  cursor: pointer;
+  background-color: var(--gray2);
+}
+
+.selected-folder {
+  background-color: var(--bg1) !important
 }

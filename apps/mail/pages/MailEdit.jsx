@@ -4,20 +4,22 @@ import {
   showSuccessMsg,
 } from "../../../services/event-bus.service.js";
 const { useEffect } = React;
-const { useNavigate, useParams, Link } = ReactRouterDOM;
+const { useNavigate, useParams, Link, useOutletContext } = ReactRouterDOM;
 
 const { useState } = React;
 
 export function MailEdit() {
   const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail());
   const [isLoading, setIsLoading] = useState(false);
+  const { onUpdateMail } = useOutletContext();
+  const params = useParams();
+
+  const { mailId } = params;
 
   const navigate = useNavigate();
-  const { mailId } = useParams();
-  console.log("inside edit");
   useEffect(() => {
     if (mailId) loadMail();
-  }, [mailId]);
+  }, [params.mailId]);
 
   function loadMail() {
     setIsLoading(true);
@@ -44,13 +46,15 @@ export function MailEdit() {
     setMailToEdit((prevMail) => ({ ...prevMail, [field]: value }));
   }
 
-  function onSaveMail(ev) {
+  function onSaveMail(ev,mode) {
     ev.preventDefault();
-    mailToEdit.sentAt=  Date.now()
+    if (mode==='send') mailToEdit.sentAt = Date.now();
     mailService
       .save(mailToEdit)
-      .then(() => {
-        showSuccessMsg("Mail saved successfuly");
+      .then((newMail) => {
+        onUpdateMail(newMail);
+        if (mode==='draft') showSuccessMsg("Draft saved successfuly");
+        else showSuccessMsg("Mail saved successfuly");
         navigate("/mail");
       })
       .catch((err) => {
@@ -63,8 +67,14 @@ export function MailEdit() {
   const { from, to, subject, body, createdAt } = mailToEdit;
   return (
     <section className={"mail-edit " + loadingClass}>
-      <h1>{mailId ? "Edit" : "Compose new"} Mail</h1>
-      <form onSubmit={onSaveMail}>
+      <header>{mailId ? "Edit draft" : "New Message"}</header>
+      <form onSubmit={(ev) => onSaveMail(ev, "send")}>
+        <button
+          onClick={(ev) => onSaveMail(ev, "draft")}
+          type="button"
+          className="back-button">
+          X
+        </button>
         <label htmlFor="from">From</label>
         <input
           className="from-input"
@@ -95,7 +105,7 @@ export function MailEdit() {
           id="subject"
         />
 
-        <label htmlFor="body">Email:</label>
+        <label htmlFor="body"></label>
         <textarea
           cols="50"
           rows="10"
@@ -107,12 +117,7 @@ export function MailEdit() {
           id="body"
         />
 
-        <div>
-          <button>Send</button>
-          <button type="button">
-            <Link to="/mail">Back</Link>
-          </button>
-        </div>
+        <button className="send-button">Send</button>
       </form>
     </section>
   );
