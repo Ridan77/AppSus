@@ -1,7 +1,7 @@
 const { useState } = React
 
 export function NoteAdd({ onAddNote }) {
-    const [noteToAdd, setNoteToAdd] = useState({ title: '', type: '' })
+    const [noteToAdd, setNoteToAdd] = useState({ title: '', type: '', content: '' })
 
     function handleChange({ target }) {
         const { name, value } = target
@@ -9,17 +9,99 @@ export function NoteAdd({ onAddNote }) {
     }
 
     function handleTypeSelect(type) {
-        setNoteToAdd({ type, content: ''})
+        setNoteToAdd(prev => ({ ...prev, type, content: '' }))
     }
 
     function handleSubmit(ev) {
         ev.preventDefault()
-        if (!noteToAdd.title || !noteToAdd.type) return
-        onAddNote(noteToAdd)
-        setNoteToAdd({ title: '', type: '' }) 
+        const { type, title, content } = noteToAdd
+        if (!type || !title) return
+
+        const note = {
+            type,
+            info: getInfoByType(type, title, content)
+        }
+        onAddNote(note)
+        setNoteToAdd({ type: '', title: '', content: '' }) 
+        console.log('note to add:', note)
+    }
+
+    function getInfoByType(type, title, content) {
+        switch (type) {
+            case 'NoteTxt':
+                return { title, txt: content }
+            case 'NoteImg':
+            case 'NoteVideo':
+                return { title, url: content }
+            case 'NoteTodos': {
+                const todos = (content || '')
+                    .split(',')
+                    .map(txt => txt.trim())
+                    .filter(txt => txt)
+                    .map(txt => ({ txt, doneAt: null }))
+                return { title, todos }
+            }
+            default:
+                return { title }
+        }
+    }
+
+    function getPlaceholder(type) {
+        switch(type) {
+            case 'NoteTxt':
+                return 'Enter text note...'
+            case 'NoteImg':
+                return 'Enter image URL...'
+            case 'NoteVideo':
+                return 'Enter YouTube URL...'
+            case 'NoteTodos':
+                return 'Enter comma separated list: car, dog, house...'
+            default:
+                return ''
+        }
     }
 
     return (
+
+        <section className="note-add-container">
+            <form onSubmit={handleSubmit}>
+                <section className="handle-note-type">
+                    <button type="button" onClick={() => handleTypeSelect('NoteTxt')}>Text</button>
+                    <button type="button" onClick={() => handleTypeSelect('NoteImg')}>Image</button>
+                    <button type="button" onClick={() => handleTypeSelect('NoteVideo')}>Video</button>
+                    <button type="button" onClick={() => handleTypeSelect('NoteTodos')}>List</button>
+                </section>
+
+                {noteToAdd.type && (
+                    <input
+                        className="title-input"
+                        type="text"
+                        name="title"
+                        placeholder="Title"
+                        value={noteToAdd.title}
+                        onChange={handleChange}
+                    />
+                )}
+
+                {(noteToAdd.type === 'NoteTxt' || noteToAdd.type === 'NoteTodos') && (
+                    <input
+                        className="body-input"
+                        type="text"
+                        name="content"
+                        placeholder={getPlaceholder(noteToAdd.type)}
+                        value={noteToAdd.content}
+                        onChange={handleChange}
+                    />
+                )}
+
+                {noteToAdd.type && <button type="submit">Add</button>}
+            </form>
+        </section>
+    )
+}
+
+
+        {/*
         <section className="note-add-container">
             <form onSubmit={handleSubmit}>
                 <input className="title-input"
@@ -46,4 +128,5 @@ export function NoteAdd({ onAddNote }) {
             </form>
         </section>
     )
-}
+    */}
+
