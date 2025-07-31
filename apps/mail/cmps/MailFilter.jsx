@@ -31,9 +31,8 @@ export function MailFilter({ filterBy, onSetFilterBy }) {
     const { txt, folder } = filterByToEdit
     return (
         <section className="mail-search-filter-container">
-            <h2>Search mails:</h2>
             <form>
-                <label htmlFor="txt">Subject</label>
+                <label htmlFor="txt">Search subject</label>
                 <input onChange={handleChange} value={txt} name="txt" id="txt" type="text" />
 
                 {/* <label htmlFor="minSpeed">Min Speed</label>
