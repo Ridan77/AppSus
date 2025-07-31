@@ -75,11 +75,15 @@ export function MailIndex() {
     const newMail = { ...mail, isRead: !mail.isRead };
     mailService.save(newMail).then(() => setIsReadStatus(!isReadStatus));
   }
+  function onToggleStarState(mail) {
+    const newMail = { ...mail, isStared: !mail.isStared };
+    mailService.save(newMail).then(() => setIsReadStatus(!isReadStatus));
+  }
 
   function getCountUnreadMails() {
     if (!mails) return;
     const numOfUnreadMails = mails.reduce((acc, item) => {
-      return (acc += item.isRead ? 1 : 0);
+      return (acc += item.isRead ? 0 : 1);
     }, 0);
     return numOfUnreadMails;
   }
@@ -104,6 +108,7 @@ export function MailIndex() {
           <MailList
             onRemoveMail={onRemoveMail}
             onToggleReadState={onToggleReadState}
+            onToggleStarState={onToggleStarState}
             mails={mails}
           />
         </section>

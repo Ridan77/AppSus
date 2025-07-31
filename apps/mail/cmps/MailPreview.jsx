@@ -1,10 +1,11 @@
-export function MailPreview({ mail }) {
+export function MailPreview({ mail,onToggleStarState }) {
   const { from, subject, sentAt, isRead, body } = mail;
   var dateFormatted;
 
   function onStarClick(ev, mail) {
     ev.stopPropagation();
     console.log(mail.isStared)
+    onToggleStarState(mail)
 
   }
   if (sentAt) {

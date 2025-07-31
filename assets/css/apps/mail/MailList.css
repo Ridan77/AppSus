@@ -23,6 +23,7 @@
 .mail-index .list-container li:hover button {
   opacity: 1;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: none;
   z-index: 10;
 }
 
@@ -31,11 +32,16 @@
 }
 
 .mail-index .list-container li.read {
-  font-family: Roboto-bald;
+  font-family: Roboto;
   background-color: var(--readitem);
   overflow-wrap: break-word;
   /* height: 30px; */
 }
+.mail-index .list-container li:not(.read) {
+  font-family: Roboto-Bold;
+
+}
+
 
 .mail-index .list-container li:hover {
   box-shadow: 1px 2px 8px var(--gray3);

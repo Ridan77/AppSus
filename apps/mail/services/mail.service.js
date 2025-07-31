@@ -50,20 +50,17 @@ function query(filterBy = {}) {
                             .filter(mail => mail.sentAt)
                         break
                     case 'starred':
-                        console.log('starred', filterBy)
                         mails = mails.filter(mail => mail.isStared)
 
                         break
                     case 'sent':
-                        mails = mails.filter(mail => mail.from === loggedinUser.email)
+                        mails = mails.filter(mail => mail.to !== loggedinUser.email)
                             .filter(mail => mail.sentAt)
                         break
                     case 'draft':
-                        console.log('draft')
                         mails = mails.filter(mail => !mail.sentAt)
                         break
                     case 'trash':
-                        console.log('trash')
                         mails = mails.filter(mail => mail.removedAt)
 
                         break

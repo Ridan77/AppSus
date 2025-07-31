@@ -1,8 +1,7 @@
 const { Link, useNavigate } = ReactRouterDOM;
 import { MailPreview } from "../cmps/MailPreview.jsx";
 
-
-export function MailList({ onRemoveMail, onToggleReadState, mails }) {
+export function MailList({ onRemoveMail, onToggleReadState, mails,onToggleStarState }) {
   const unReadClass = "fa-solid fa-envelope-open";
   const readClass = "fa-solid fa-envelope";
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ export function MailList({ onRemoveMail, onToggleReadState, mails }) {
             onToggleReadState(mail);
             navigate(mail.sentAt ? `/mail/${mail.id}` : `./edit/${mail.id}`);
           }}>
-          {<MailPreview mail={mail} />}
+          {<MailPreview mail={mail} onToggleStarState={onToggleStarState} />}
 
           <div className="btn-container">
             <button
@@ -32,7 +31,7 @@ export function MailList({ onRemoveMail, onToggleReadState, mails }) {
                 ev.stopPropagation();
                 onToggleReadState(mail);
               }}>
-              <i className={mail.isRead ? unReadClass : readClass}></i>
+              <i className={mail.isRead ? readClass : unReadClass}></i>
             </button>
             {/* <button onClick={()=>onToggleReadState(mail)}>
               <Link to={`/mail/${mail.id}`}>
