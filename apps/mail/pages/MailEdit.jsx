@@ -46,14 +46,14 @@ export function MailEdit() {
     setMailToEdit((prevMail) => ({ ...prevMail, [field]: value }));
   }
 
-  function onSaveMail(ev) {
+  function onSaveMail(ev,mode) {
     ev.preventDefault();
-    if (!params.mailId) mailToEdit.sentAt = Date.now();
+    if (mode==='send') mailToEdit.sentAt = Date.now();
     mailService
       .save(mailToEdit)
       .then((newMail) => {
         onUpdateMail(newMail);
-        if (params.mailId) showSuccessMsg("Draft saved successfuly");
+        if (mode==='draft') showSuccessMsg("Draft saved successfuly");
         else showSuccessMsg("Mail saved successfuly");
         navigate("/mail");
       })
@@ -68,8 +68,13 @@ export function MailEdit() {
   return (
     <section className={"mail-edit " + loadingClass}>
       <header>{mailId ? "Edit draft" : "New Message"}</header>
-      <form onSubmit={onSaveMail}>
-        <button className="back-button">X</button>
+      <form onSubmit={(ev) => onSaveMail(ev, "send")}>
+        <button
+          onClick={(ev) => onSaveMail(ev, "draft")}
+          type="button"
+          className="back-button">
+          X
+        </button>
         <label htmlFor="from">From</label>
         <input
           className="from-input"
@@ -82,7 +87,6 @@ export function MailEdit() {
 
         <label htmlFor="to">To</label>
         <input
-          autoFocus
           className="to-input"
           value={to}
           onChange={handleChange}
