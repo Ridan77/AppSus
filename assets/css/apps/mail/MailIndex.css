@@ -1,1 +1,10 @@
- /* mail index  */
+.mail-index{
+    background-color: var(--bg5);
+}
+
+
+.list-sidenav-container{
+display: grid;
+grid-template-columns: 100px 1fr;
+margin-top: 20px;
+ }

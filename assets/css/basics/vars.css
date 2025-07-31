@@ -3,6 +3,8 @@
     --bg4: rgb(227, 237, 241);
     --bg2: rgb(50, 160, 204);
     --bg3: rgb(89, 134, 206);
+    --bg4: #f0f4f9;
+    --bg5: #fff;
     
     --color1: rgb(26, 115, 232);
     --color2: rgb(24, 128, 56);
@@ -15,4 +17,6 @@
 
     --white : #ffffff;
     --shortdelay: 0.3s;
+    --readitem:#f2f6fc;
+
 }

@@ -1,0 +1,13 @@
+.sidebar-container button{
+border: none;
+background-color: inherit;
+display: block;
+margin: auto;
+margin-bottom: 30px ;
+transition: var(--shortdelay);
+
+}
+
+.sidebar-container button:hover{
+cursor: pointer;
+}

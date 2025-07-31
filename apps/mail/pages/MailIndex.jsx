@@ -6,9 +6,10 @@ import {
 import { utilService } from "../../../services/util.service.js";
 import { MailList } from "../cmps/MailList.jsx";
 import { MailFilter } from "../cmps/MailFilter.jsx";
+import { SideNav } from "../cmps/SideNav.jsx";
 
 const { useState, useEffect } = React;
-const { Link, useSearchParams,Outlet} = ReactRouterDOM;
+const { Link, useSearchParams, Outlet } = ReactRouterDOM;
 
 export function MailIndex() {
   const [mails, setMails] = useState(null);
@@ -51,7 +52,6 @@ export function MailIndex() {
   function onSetFilterBy(filterByToEdit) {
     setFilterBy({ ...filterByToEdit });
   }
-
   function onToggleReadState(mail) {
     const newMail = { ...mail, isRead: !mail.isRead };
     mailService.save(newMail).then(() => setIsReadStatus(!isReadStatus));
@@ -68,21 +68,26 @@ export function MailIndex() {
   if (!mails) return <div className="loader">Loading...</div>;
   return (
     <section className="mail-index">
-      <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
-      <section style={{ marginTop: "10px" }} className="new-mail-container">
-       <button>
-        <Link to="/mail/edit">Compose</Link>
-       </button>
-     </section>
-      <h3>Un Read Mails: {getCountUnreadMails()}</h3>
-      <section className="list-container">
-        <MailList
-          onRemoveMail={onRemoveMail}
-          onToggleReadState={onToggleReadState}
-          mails={mails}
-        />
+      <section
+        className="newmail-filter=container">
+        <button>
+          <Link to="/mail/edit">Compose</Link>
+        </button>
+        <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
       </section>
-    <Outlet/>
+      <section className="list-sidenav-container">
+        <nav className="folder-container">
+          <SideNav unreadCount={getCountUnreadMails()} onSetFilterBy={onSetFilterBy} filterBy={filterBy}></SideNav>
+        </nav>
+        <section className="list-container">
+          <MailList
+            onRemoveMail={onRemoveMail}
+            onToggleReadState={onToggleReadState}
+            mails={mails}
+          />
+        </section>
+      </section>
+      <Outlet />
     </section>
   );
 }

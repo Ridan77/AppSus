@@ -40,10 +40,34 @@ function query(filterBy = {}) {
                 const regExp = new RegExp(filterBy.txt, 'i')
                 mails = mails.filter(mail => regExp.test(mail.subject))
             }
-            if (filterBy.Body) {
-                mails = mails.filter(mail => mail.body >= filterBy.Body)
+            if (filterBy.folder) {
+                switch (filterBy.folder) {
+
+                    case 'inbox':
+                        mails = mails.filter(mail => mail.to === loggedinUser.email)
+                            .filter(mail => !mail.removedAt)
+                            .filter(mail => mail.sentAt)
+                        break
+                    case 'starred':
+                        console.log('starred')
+                        break
+                    case 'sent':
+                        mails = mails.filter(mail => mail.from === loggedinUser.email)
+                            .filter(mail => mail.sentAt)
+                        break
+                    case 'draft':
+                        console.log('draft')
+                        mails = mails.filter(mail => !mail.sentAt)
+                        break
+                    case 'trash':
+                        console.log('trash')
+                        mails = mails.filter(mail => mail.removedAt)
+
+                        break
+
+                }
+
             }
-            // console.log(' mails:', mails)
             return mails
         })
 }
@@ -69,7 +93,7 @@ function save(mail) {
 function getEmptyMail() {
 
     const mail = {
-        createdAt:  Date.now(),
+        createdAt: Date.now(),
         subject: '',
         body: '',
         isRead: false,
@@ -93,12 +117,6 @@ function _createMails() {
         mails = _mockData()
         utilService.saveToStorage(MAIL_KEY, mails)
     }
-}
-
-function _createMail() {
-    const mail = getEmptyMail()
-    mail.id = utilService.utilService.makeId()
-    return mail
 }
 
 
@@ -157,7 +175,7 @@ function _mockData() {
             isRead: true,
             sentAt: 1651145930594,
             removedAt: null,
-            from: 'no-reply@shopnow.com',
+            from: 'user@appsus.com',
             to: 'jane.doe@gmail.com'
         },
         {
@@ -188,7 +206,7 @@ function _mockData() {
             subject: 'Security Alert',
             body: 'We noticed a login attempt from a new device. Was this you?',
             isRead: false,
-            sentAt: 1651181930594,
+            sentAt: null,
             removedAt: null,
             from: 'alerts@securemail.com',
             to: 'user@appsus.com'
@@ -245,7 +263,7 @@ function _mockData() {
             isRead: false,
             sentAt: 1651241930594,
             removedAt: null,
-            from: 'momo@momo.com',
+            from: 'user@appsus.com',
             to: 'friend@mailme.com'
         },
         {
@@ -288,7 +306,7 @@ function _mockData() {
             body: 'Please find attached the invoice for your July services.',
             isRead: true,
             sentAt: 1651289930594,
-            removedAt: null,
+            removedAt: 1651289930594,
             from: 'finance@agency.com',
             to: 'billing@freelancehost.com'
         },

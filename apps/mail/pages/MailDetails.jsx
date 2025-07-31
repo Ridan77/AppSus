@@ -38,7 +38,7 @@ export function MailDetails() {
 
 
         <button onClick={onBack}> 
-    <i class="fa-regular fa-circle-xmark"></i>
+    <i className="fa-regular fa-circle-xmark"></i>
         </button>
         <h3>Mail:</h3>
         <p>From:{from}</p>

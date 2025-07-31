@@ -1,4 +1,5 @@
 
+@import './basics/typography.css';
 @import './basics/vars.css';
 @import './basics/base.css';
 @import './basics/helpers.css';
@@ -18,3 +19,4 @@
 @import './apps/mail/MailPreview.css';
 @import './apps/mail/MailDetails.css';
 @import './apps/mail/MailEdit.css';
+@import './apps/mail/SideNav.css';
