@@ -2,6 +2,24 @@
     background-color: var(--bg5);
 }
 
+.newmail-filter-container{
+display: flex;
+align-items: center;
+}
+
+
+
+.newmail-filter-container button{
+    background-color: var(--bg6);
+    margin: 10px;
+    width: 100px;
+    height: 56px;
+    border-radius: 16px;
+    border: none
+    ;
+
+
+}
 
 .list-sidenav-container{
 display: grid;

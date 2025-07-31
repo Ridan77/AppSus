@@ -1,15 +1,14 @@
-.list-container{
+.list-container {
   background-color: var(#fff);
 }
 
 .mail-index .list-container ul {
-
-margin: 0;
+  margin: 0;
 }
 .mail-index .list-container li {
   display: flex;
   list-style: none;
-height: 30px;
+  height: 30px;
   justify-content: space-between;
   transition: var(--shortdelay);
 }
@@ -24,10 +23,11 @@ height: 30px;
 .mail-index .list-container li:hover button {
   opacity: 1;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
 }
 
 .mail-index .list-container li {
-  border: 1px solid var(--gray2);
+  border-bottom: 1px solid var(--gray2);
 }
 
 .mail-index .list-container li.read {
@@ -42,8 +42,17 @@ height: 30px;
 }
 
 .btn-container {
+  position: absolute;
+  right: 0;
   margin: 5px;
   width: auto;
   display: flex;
   gap: 10px;
+}
+
+.mail-index .list-container li:hover .date-field {
+  opacity: 0;
+}
+
+.mail-index .list-container li:hover button {
 }

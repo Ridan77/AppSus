@@ -87,7 +87,7 @@ export function MailIndex() {
   if (!mails) return <div className="loader">Loading...</div>;
   return (
     <section className="mail-index">
-      <section className="newmail-filter=container">
+      <section className="newmail-filter-container">
         <button>
           <Link to="/mail/edit">Compose</Link>
         </button>
