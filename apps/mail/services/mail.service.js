@@ -20,6 +20,7 @@ export const mailService = {
     getDefaultFilter,
     getFilterFromSearchParams,
     toggleReadState,
+    moveToTrash,
 }
 
 
@@ -152,6 +153,14 @@ function toggleReadState(mailId) {
 
 }
 
+function moveToTrash(mailId){
+    return get(mailId)
+        .then(mail=>{
+            mail.removedAt= Date.now()
+            save(mail)
+            return mail
+        })
+}
 
 
 function _mockData() {

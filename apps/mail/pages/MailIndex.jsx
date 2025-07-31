@@ -38,6 +38,19 @@ export function MailIndex() {
 
   function onRemoveMail(mailId) {
     mailService
+      .get(mailId)
+      .then((mail) => {
+        if (mail.removedAt) removeMail(mailId);
+        else mailService.moveToTrash(mailId);
+      })
+      .catch((err) => {
+        console.log("Problem deleting mail:", err);
+        showErrorMsg("Problem deleting mail!");
+      }).finally(loadMails())
+  }
+
+  function removeMail(mailId) {
+    mailService
       .remove(mailId)
       .then(() => {
         setMails((prevMails) => prevMails.filter((mail) => mail.id !== mailId));
@@ -68,8 +81,7 @@ export function MailIndex() {
   if (!mails) return <div className="loader">Loading...</div>;
   return (
     <section className="mail-index">
-      <section
-        className="newmail-filter=container">
+      <section className="newmail-filter=container">
         <button>
           <Link to="/mail/edit">Compose</Link>
         </button>
@@ -77,7 +89,10 @@ export function MailIndex() {
       </section>
       <section className="list-sidenav-container">
         <nav className="folder-container">
-          <SideNav unreadCount={getCountUnreadMails()} onSetFilterBy={onSetFilterBy} filterBy={filterBy}></SideNav>
+          <SideNav
+            unreadCount={getCountUnreadMails()}
+            onSetFilterBy={onSetFilterBy}
+            filterBy={filterBy}></SideNav>
         </nav>
         <section className="list-container">
           <MailList
