@@ -12,11 +12,14 @@ export function MailEdit() {
   const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail());
   const [isLoading, setIsLoading] = useState(false);
   const { onUpdateMail } = useOutletContext();
+  const params = useParams();
+
+  const { mailId } = params;
+
   const navigate = useNavigate();
-  const { mailId } = useParams();
   useEffect(() => {
     if (mailId) loadMail();
-  }, [mailId]);
+  }, [params.mailId]);
 
   function loadMail() {
     setIsLoading(true);
@@ -45,12 +48,13 @@ export function MailEdit() {
 
   function onSaveMail(ev) {
     ev.preventDefault();
-    mailToEdit.sentAt = Date.now();
+    if (!params.mailId) mailToEdit.sentAt = Date.now();
     mailService
       .save(mailToEdit)
       .then((newMail) => {
         onUpdateMail(newMail);
-        showSuccessMsg("Mail saved successfuly");
+        if (params.mailId) showSuccessMsg("Draft saved successfuly");
+        else showSuccessMsg("Mail saved successfuly");
         navigate("/mail");
       })
       .catch((err) => {
@@ -63,13 +67,9 @@ export function MailEdit() {
   const { from, to, subject, body, createdAt } = mailToEdit;
   return (
     <section className={"mail-edit " + loadingClass}>
-      <header>{mailId ? "Edit draft" : "New Message"} 
-
-          <button className="back-button"type="button">
-            <Link to="/mail">X</Link>
-          </button>
-      </header>
+      <header>{mailId ? "Edit draft" : "New Message"}</header>
       <form onSubmit={onSaveMail}>
+        <button className="back-button">X</button>
         <label htmlFor="from">From</label>
         <input
           className="from-input"
@@ -82,7 +82,7 @@ export function MailEdit() {
 
         <label htmlFor="to">To</label>
         <input
-            autofocus
+          autoFocus
           className="to-input"
           value={to}
           onChange={handleChange}
@@ -113,7 +113,7 @@ export function MailEdit() {
           id="body"
         />
 
-          <button className="send-button" >Send</button>
+        <button className="send-button">Send</button>
       </form>
     </section>
   );
