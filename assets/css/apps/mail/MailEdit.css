@@ -1,10 +1,18 @@
+.mail-edit header {
+text-align: left;
+height: 30px;
+padding: 10px;
+background-color: var(--readitem);
+font-family: Roboto-Bold;
+}
+
+
 .mail-edit {
-    position: absolute;
-    right:50px;
-    bottom: 0;
-  text-align: center;
+  position: absolute;
+  right: 0;
+  bottom: 0;
   width: max-content;
-  background-color: lightblue;
+  background-color: var(--bg5);
 }
 
 .mail-edit.loading {
@@ -13,26 +21,52 @@
 
 .mail-edit form {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 80px 1fr;
   grid-template-rows: 20px 20px 20px 1fr 130px;
   align-items: start;
   font-size: 1rem;
   width: 100%;
-  gap:10px;
+  gap: 10px;
   margin: auto;
 }
 
 .mail-edit form input {
+    
   margin-bottom: 15px;
+  border: none;
+  border-bottom: 1px solid var(--bg4);
 }
 
-.mail-edit form button{
-    margin: 10px;
+
+.mail-edit form label {
+margin-left: 10px;
 }
 
-.mail-edit form  .body-input {
+.mail-edit form button {
+  margin: 10px;
+}
+
+.mail-edit form .body-input {
   grid-row: 4/6;
   grid-column: 2;
-  
-    height:100px
+border: none;
+  height: 100px;
+}
+
+
+.back-button{
+    position: absolute;
+    right:0;
+    top:0;
+    border: none;
+    background-color: inherit;
+}
+.send-button{
+    align-self: flex-end;
+    background-color:var(--color1) ;
+    color: var(--white);
+    border-radius: 1em;
+    height: 2em;
+    font-family: Roboto;
+    border: none;
 }

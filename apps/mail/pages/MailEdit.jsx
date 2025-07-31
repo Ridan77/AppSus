@@ -4,7 +4,7 @@ import {
   showSuccessMsg,
 } from "../../../services/event-bus.service.js";
 const { useEffect } = React;
-const { useNavigate, useParams, Link,useOutletContext } = ReactRouterDOM;
+const { useNavigate, useParams, Link, useOutletContext } = ReactRouterDOM;
 
 const { useState } = React;
 
@@ -14,7 +14,6 @@ export function MailEdit() {
   const { onUpdateMail } = useOutletContext();
   const navigate = useNavigate();
   const { mailId } = useParams();
-  console.log("inside edit");
   useEffect(() => {
     if (mailId) loadMail();
   }, [mailId]);
@@ -50,7 +49,7 @@ export function MailEdit() {
     mailService
       .save(mailToEdit)
       .then((newMail) => {
-        onUpdateMail(newMail)
+        onUpdateMail(newMail);
         showSuccessMsg("Mail saved successfuly");
         navigate("/mail");
       })
@@ -64,7 +63,12 @@ export function MailEdit() {
   const { from, to, subject, body, createdAt } = mailToEdit;
   return (
     <section className={"mail-edit " + loadingClass}>
-      <h1>{mailId ? "Edit" : "Compose new"} Mail</h1>
+      <header>{mailId ? "Edit draft" : "New Message"} 
+
+          <button className="back-button"type="button">
+            <Link to="/mail">X</Link>
+          </button>
+      </header>
       <form onSubmit={onSaveMail}>
         <label htmlFor="from">From</label>
         <input
@@ -78,6 +82,7 @@ export function MailEdit() {
 
         <label htmlFor="to">To</label>
         <input
+            autofocus
           className="to-input"
           value={to}
           onChange={handleChange}
@@ -96,7 +101,7 @@ export function MailEdit() {
           id="subject"
         />
 
-        <label htmlFor="body">Email:</label>
+        <label htmlFor="body"></label>
         <textarea
           cols="50"
           rows="10"
@@ -108,12 +113,7 @@ export function MailEdit() {
           id="body"
         />
 
-        <div>
-          <button>Send</button>
-          <button type="button">
-            <Link to="/mail">Back</Link>
-          </button>
-        </div>
+          <button className="send-button" >Send</button>
       </form>
     </section>
   );

@@ -1,6 +1,5 @@
 export function SideNav({ unreadCount, onSetFilterBy, filterBy }) {
     function onClickFolder(folder) {
-    console.log(filterBy,folder);
     filterBy.folder = folder;
     onSetFilterBy(filterBy);
   }
