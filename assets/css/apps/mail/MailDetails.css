@@ -1,6 +1,7 @@
 .details-container {
   background-color: var(--white);
   width: 80%;
+  max-width: 600px ;
   height: 700px;
   margin: auto;
   color: var(--black);

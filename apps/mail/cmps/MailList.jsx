@@ -33,12 +33,7 @@ export function MailList({ onRemoveMail, onToggleReadState, mails,onToggleStarSt
               }}>
               <i className={mail.isRead ? readClass : unReadClass}></i>
             </button>
-            {/* <button onClick={()=>onToggleReadState(mail)}>
-              <Link to={`/mail/${mail.id}`}>
-              <i className="fa-regular fa-share-from-square"></i>
-              </Link>
-            </button> */}
-          </div>
+               </div>
         </li>
       ))}
     </ul>

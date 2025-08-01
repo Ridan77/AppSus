@@ -93,7 +93,7 @@ export function MailIndex() {
     <section className="mail-index">
       <section className="newmail-filter-container">
         <button>
-          <Link to="/mail/edit">Compose</Link>
+          <Link to="/mail/edit"> <i className="fa-solid fa-pen"></i> Compose</Link>
         </button>
         <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
       </section>

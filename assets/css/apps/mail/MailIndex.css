@@ -36,3 +36,7 @@
     top:130px;
   width: 200px;
 }
+.newmail-filter-container i::before{
+  color:black;
+  margin-right: 10px;
+}

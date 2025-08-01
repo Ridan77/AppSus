@@ -14,7 +14,7 @@
 .mail-edit {
   position: fixed;
   right: 0;
-  bottom: 0;
+  bottom: 45px;
   width: max-content;
   height: fit-content;
   background-color: var(--bg5);
