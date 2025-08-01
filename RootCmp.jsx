@@ -9,6 +9,7 @@ import { MailIndex } from "./apps/mail/pages/MailIndex.jsx";
 import { NoteIndex } from "./apps/note/pages/NoteIndex.jsx";
 import { MailDetails } from "./apps/mail/pages/MailDetails.jsx";
 import { MailEdit } from "./apps/mail/pages/MailEdit.jsx";
+import { AppFooter } from "./cmps/AppFooter.jsx";
 
 export function RootCmp() {
   return (
@@ -27,6 +28,7 @@ export function RootCmp() {
         </Routes>
         <UserMsg />
       </section>
+        <AppFooter />
     </Router>
   );
 }

@@ -1,25 +1,26 @@
 :root {
-    --bg1: lightblue;
-    --bg4: rgb(227, 237, 241);
-    --bg2: rgb(50, 160, 204);
-    --bg3: rgb(89, 134, 206);
-    --bg4: #f0f4f9;
-    --bg5: #fff;
-    --bg6: #a8c7fa;
-    
-    --color1: rgb(55, 132, 233);
-    --color2: rgb(24, 128, 56);
-    --color3: rgb(248, 91, 88);
-    --color4: rgb(241, 233, 110);
+  --bg1: lightblue;
+  --bg4: rgb(227, 237, 241);
+  --bg2: rgb(50, 160, 204);
+  --bg3: rgb(89, 134, 206);
+  --bg4: #f0f4f9;
+  --bg5: #fff;
+  --bg6: #a8c7fa;
+  --black: black;
 
-    --gray0: #f3f3f3;
-    --gray1: #aaa;
-    --gray2: #888888cc;
-    --gray3: #333;
-    --grey4:#d4cfcf;
+  --color1: rgb(55, 132, 233);
+  --color2: rgb(24, 128, 56);
+  --color3: rgb(248, 91, 88);
+  --color4: rgb(241, 233, 110);
 
-    --white : #ffffff;
-    --shortdelay: 0.3s;
-    --readitem:#f2f6fc;
+  --gray0: #f3f3f3;
+  --gray1: #aaa;
+  --gray2: #888888cc;
+  --gray3: #333;
+  --grey4: #d4cfcf;
+  --gray5: #dddfd9;
 
+  --white: #ffffff;
+  --shortdelay: 0.3s;
+  --readitem: #f2f6fc;
 }

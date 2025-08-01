@@ -19,7 +19,7 @@ export function MailEdit() {
   const navigate = useNavigate();
   useEffect(() => {
     if (mailId) loadMail();
-  }, [params.mailId]);
+  }, [mailId]);
 
   function loadMail() {
     setIsLoading(true);
@@ -46,14 +46,14 @@ export function MailEdit() {
     setMailToEdit((prevMail) => ({ ...prevMail, [field]: value }));
   }
 
-  function onSaveMail(ev,mode) {
+  function onSaveMail(ev, mode) {
     ev.preventDefault();
-    if (mode==='send') mailToEdit.sentAt = Date.now();
+    if (mode === "send") mailToEdit.sentAt = Date.now();
     mailService
       .save(mailToEdit)
       .then((newMail) => {
         onUpdateMail(newMail);
-        if (mode==='draft') showSuccessMsg("Draft saved successfuly");
+        if (mode === "draft") showSuccessMsg("Draft saved successfuly");
         else showSuccessMsg("Mail saved successfuly");
         navigate("/mail");
       })
@@ -67,16 +67,18 @@ export function MailEdit() {
   const { from, to, subject, body, createdAt } = mailToEdit;
   return (
     <section className={"mail-edit " + loadingClass}>
-      <header>{mailId ? "Edit draft" : "New Message"}</header>
+      <header>
+        <div>{mailId ? "Edit draft" : "New Message"}</div>
+      </header>
       <form onSubmit={(ev) => onSaveMail(ev, "send")}>
         <button
           onClick={(ev) => onSaveMail(ev, "draft")}
           type="button"
           className="back-button">
-          X
+          ✖
         </button>
-        <label htmlFor="from">From</label>
         <input
+          placeHolder="From"
           className="from-input"
           value={from}
           onChange={handleChange}
@@ -85,8 +87,8 @@ export function MailEdit() {
           id="from"
         />
 
-        <label htmlFor="to">To</label>
         <input
+          placeHolder="Recipients"
           className="to-input"
           value={to}
           onChange={handleChange}
@@ -95,8 +97,8 @@ export function MailEdit() {
           id="to"
         />
 
-        <label htmlFor="subject">Subject</label>
         <input
+          placeHolder="Subject"
           className="subject-input"
           value={subject}
           onChange={handleChange}
@@ -105,10 +107,9 @@ export function MailEdit() {
           id="subject"
         />
 
-        <label htmlFor="body"></label>
         <textarea
           cols="50"
-          rows="10"
+          rows="30"
           className="body-input"
           value={body}
           onChange={handleChange}

@@ -18,8 +18,8 @@ export function MailPreview({ mail,onToggleStarState }) {
       <button
         className={mail.isStared ? "stared"+' star-button' : "" +' star-button'} 
         onClick={(ev) => onStarClick(ev, mail)}>
-        {" "}
-        ⭐
+        {/* ⭐ */}
+        {mail.isStared ? "⭐" : "☆"}
       </button>
       <div className="from-field">{from}</div>
       <div className="subject-field">
