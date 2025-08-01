@@ -33,19 +33,37 @@ export function MailDetails() {
   return (
     <div>
       <div className="details-container">
-        
-
-
-
-        <button onClick={onBack}> 
-    <i className="fa-regular fa-circle-xmark"></i>
-        </button>
-        <h3>Mail:</h3>
-        <p>From:{from}</p>
-        <p>To:{to}</p>
-        <p>Subject: {subject}</p>
-        <p>{body}</p>
-        <button onClick={onBack}>Delete</button>
+        <div className="action-buttons">
+          <button onClick={onBack}>
+            <i class="fa-solid fa-left-long"></i>
+          </button>
+          <button className="prev-mail">
+            <i class="fa-solid fa-backward-step "></i>
+          </button>
+          <button className="next-mail">
+            <i class="fa-solid fa-forward-step "></i>
+          </button>
+          <button>
+            <i class="fa-solid fa-envelope-open "></i>
+          </button>
+          <button onClick={onBack}>
+            <i class="fa-solid fa-trash "></i>
+          </button>
+        </div>
+        <div className="mail-details">
+          <h1>{subject}</h1>
+          <h5>{from}</h5>
+          <h6>To:{to}</h6>
+          <p>{body}</p>
+          <div className="replay-forward-container" >
+            <button className="reply-button">
+              <i class="fa-solid fa-reply"></i>Reply
+            </button>
+            <button className="forward-button">
+              <i class="fa-solid fa-share"></i>Forward
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
