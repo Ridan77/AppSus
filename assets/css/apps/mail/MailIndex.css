@@ -31,6 +31,8 @@
 }
 
 .folder-container {
+
   position: fixed;
+    top:130px;
   width: 200px;
 }

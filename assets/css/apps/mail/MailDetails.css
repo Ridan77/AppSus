@@ -4,6 +4,7 @@
   height: 700px;
   margin: auto;
   color: var(--black);
+  margin-top: 60px;
 }
 .action-buttons {
   height: 80px;
@@ -12,7 +13,9 @@
   transition: var(--shortdelay);
 }
 
-
+.action-buttons button:hover {
+  cursor: pointer;
+}
 .mail-details {
   width: 70%;
   margin: auto;
