@@ -17,9 +17,6 @@ export function NoteTodos({ info }) {
 
     return (
         <div>
-            <div className="note-title">
-                <h2>{info.title}</h2>
-            </div>
             <div className="note-body">
                 {todos.map((todo, idx) => (
                     <div key={idx} className={`todo-item ${todo.doneAt ? 'done' : ''}`}>

@@ -1,7 +1,7 @@
 import { NotePreview } from "./NotePreview.jsx";
 const { useState } = React
 
-export function NoteList({ notes, onRemoveNote, onEditNote, onChangeNoteColor }) {
+export function NoteList({ notes, onRemoveNote, onEditNote, onChangeNoteColor, onTogglePin, onDuplicateNote }) {
 
     const [openDropdownId, setOpenDropdownId] = useState(null)
 
@@ -10,6 +10,7 @@ export function NoteList({ notes, onRemoveNote, onEditNote, onChangeNoteColor })
         { name: '--color2', label: 'Color 2' },
         { name: '--color3', label: 'Color 3' },
         { name: '--color4', label: 'Color 4' },
+        { name: '--white', lable: 'White' }
     ]
 
     function toggleDropdown(noteId) {
@@ -17,7 +18,8 @@ export function NoteList({ notes, onRemoveNote, onEditNote, onChangeNoteColor })
     }
 
     return (
-        <ul className="note-list container">
+        <ul className="note-list">
+            
             {notes.map(note => (
                 <li 
                     key={note.id} 
@@ -25,11 +27,12 @@ export function NoteList({ notes, onRemoveNote, onEditNote, onChangeNoteColor })
                     style={{ backgroundColor: note.style && note.style.backgroundColor || '#fff' }}
                 >
 
-                    <NotePreview note={note} />
+                    <NotePreview note={note} onTogglePin={onTogglePin} />
 
                     <section className="handle-note-btns">
-                        <button onClick={() => onRemoveNote(note.id)}>Remove</button>
-                        <button onClick={() => onEditNote(note)}>Edit</button>
+                        <button onClick={() => onRemoveNote(note.id)}>R</button>
+                        <button onClick={() => onEditNote(note)}>E</button>
+                        <button onClick={() => onDuplicateNote(note)}>D</button>
 
                         <div className="color-picker">
                             <button onClick={() => toggleDropdown(note.id)}>🎨</button>
@@ -39,7 +42,7 @@ export function NoteList({ notes, onRemoveNote, onEditNote, onChangeNoteColor })
                                     {colors.map(c => (
                                         <div
                                             key={c.name}
-                                            className="color-swatch"
+                                            className="color-switch"
                                             style={{ backgroundColor: `var(${c.name})` }}
                                             onClick={() => {
                                                 onChangeNoteColor(note.id, `var(${c.name})`)
@@ -53,6 +56,7 @@ export function NoteList({ notes, onRemoveNote, onEditNote, onChangeNoteColor })
                     </section>
                 </li>
             ))}
+            
         </ul>
     )
 }

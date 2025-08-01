@@ -3,22 +3,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px auto;
+    margin: 80px auto 30px auto;
     
 }
 
 .note-add-container form {
     display: flex;
     flex-direction: column;
-    background: #ffffff;
+    background: var(--white);
     border: 1px solid transparent;
     border-radius: 10px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     width: 500px;
 }
 
 .note-add-container input {
     border: none;
+    border-radius: 10px;
 }
 
 .note-add-container input:focus {
@@ -40,3 +41,16 @@
     gap: 10px;
     margin: 4px 16px;
 }
+
+.note-add-container .handle-note-type button {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    transition: 300ms;
+}
+
+.note-add-container .handle-note-type button:hover {
+    cursor: pointer;
+    background-color: rgba(87, 87, 87, 0.18);
+}
+

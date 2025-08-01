@@ -20,14 +20,17 @@ export function NoteIndex() {
         loadNotes()
     }, [filterBy])
 
+
     function loadNotes() {
         noteService.query()
             .then(allNotes => {
                 const filteredNotes = allNotes.filter(note => {
                     const title = (note.info && note.info.title) ? note.info.title : ''
-                    return title.toLowerCase().includes((filterBy.txt && filterBy.txt.toLowerCase()) || '')
+                    const matchesText = title.toLowerCase().includes((filterBy.txt || '').toLowerCase())
+                    const matchesType = !filterBy.type || note.type === filterBy.type
+                    return matchesText && matchesType
                 })
-                setNotes(filteredNotes)
+                setNotes(sortNotes(filteredNotes))
             })
             .catch(err => {
                 console.log('err:', err)
@@ -35,6 +38,7 @@ export function NoteIndex() {
             })
     }
 
+    
     function onRemoveNote(noteId) {
         noteService.remove(noteId)
             .then(() => {
@@ -101,12 +105,66 @@ export function NoteIndex() {
             })
     }
 
+    function onTogglePin(noteId) {
+        noteService.get(noteId)
+            .then(note => {
+                note.isPinned = !note.isPinned
+                return noteService.save(note)
+            })
+            .then(updatedNote => {
+                setNotes(prevNotes => {
+                    const newNotes = prevNotes.map(n => n.id === updatedNote.id ? updatedNote : n)
+                    return sortNotes(newNotes)
+                })
+                showSuccessMsg(updatedNote.isPinned ? 'Note pinned!' : 'Note unpinned!')
+            })
+            .catch(err => {
+                console.log('Error pinning note:', err)
+                showErrorMsg('Could not pin/unpin note.')
+            })
+    }
+
+    function sortNotes(notes) {
+        return [...notes].sort((a, b) => {
+            if (a.isPinned === b.isPinned) return 0
+            return a.isPinned ? -1 : 1
+        })
+    }
+
+    function onDuplicateNote(note) {
+        const duplicatedNote = {
+            ...note,
+            id: null, 
+            createdAt: Date.now(),
+            isPinned: false, 
+        }
+
+        noteService.save(duplicatedNote)
+            .then(savedNote => {
+                setNotes(prevNotes => [...prevNotes, savedNote])
+                showSuccessMsg('Note duplicated!')
+            })
+            .catch(err => {
+                console.error('Error duplicating note:', err)
+                showErrorMsg('Could not duplicate note.')
+            })
+    }
+
+
+
     if (!notes) return <div className="loader">Loading...</div>
     return (
         <section className="note-index">
             <NoteFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
             <NoteAdd onAddNote={onAddNote} />
-            <NoteList notes={notes} onRemoveNote={onRemoveNote} onEditNote={onEditNote} onChangeNoteColor={onChangeNoteColor} />
+            <NoteList
+                notes={notes} 
+                onRemoveNote={onRemoveNote} 
+                onEditNote={onEditNote} 
+                onChangeNoteColor={onChangeNoteColor} 
+                onTogglePin={onTogglePin}
+                onDuplicateNote={onDuplicateNote}
+             />
             {editingNote && (
                 <NoteEdit
                     note={editingNote}

@@ -57,7 +57,7 @@ export function NoteAdd({ onAddNote }) {
             case 'NoteTodos':
                 return 'Enter comma separated list: car, dog, house...'
             default:
-                return ''
+                return 'Choose a type for your note...'
         }
     }
 
@@ -76,14 +76,9 @@ export function NoteAdd({ onAddNote }) {
     return (
 
         <section className="note-add-container">
+           
             <form onSubmit={handleSubmit}>
-                <section className="handle-note-type">
-                    <button type="button" onClick={() => handleTypeSelect('NoteTxt')}>Text</button>
-                    <button type="button" onClick={() => handleTypeSelect('NoteImg')}>Image</button>
-                    <button type="button" onClick={() => handleTypeSelect('NoteVideo')}>Video</button>
-                    <button type="button" onClick={() => handleTypeSelect('NoteTodos')}>List</button>
-                </section>
-
+                
                 {noteToAdd.type && (
                     <input
                         className="title-input"
@@ -112,9 +107,16 @@ export function NoteAdd({ onAddNote }) {
                     />
                 )}
 
+                <section className="handle-note-type">
+                    <button type="button" onClick={() => handleTypeSelect('NoteTxt')}>T</button>
+                    <button type="button" onClick={() => handleTypeSelect('NoteImg')}>I</button>
+                    <button type="button" onClick={() => handleTypeSelect('NoteVideo')}>V</button>
+                    <button type="button" onClick={() => handleTypeSelect('NoteTodos')}>L</button>
+                    {noteToAdd.type && <button className="add-note-btn" type="submit">Add</button>}
+                </section>
 
-                {noteToAdd.type && <button type="submit" style={{backgroundColor: 'rgba(255, 255, 255, 1)', border: 'none'}}>Add</button>}
             </form>
+            
         </section>
     )
 }

@@ -1,6 +1,49 @@
+.note-filter-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 60px;
+    height: calc(100vh - 60px);
+    width: 160px;
+    padding: 1rem;
+    background-color: var(--white);
+    border-right: 1px solid var(--gray1);
+    z-index: 10;
+}
 
-.note-filter input{
-    font-size: 16px;
-    padding: 12px 16px 12px 16px;
-    margin: 10px;
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.side-menu button {
+    padding: 8px 12px;
+    border: 1px solid var(--gray1);
+    border-radius: 6px;
+    background-color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.side-menu button:hover {
+    background-color: var(--gray0);
+}
+
+.side-menu button.active {
+    background-color: var(--gray1);
+    color: white;
+}
+
+.search-input {
+    margin-top: 1.5rem;
+}
+
+.search-input input {
+    padding: 10px 14px;
+    border: 1px solid var(--gray1);
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
 }

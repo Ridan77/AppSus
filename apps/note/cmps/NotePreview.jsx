@@ -13,14 +13,20 @@ const dynamicCmps = {
 
 
 
-export function NotePreview({ note, style }) {
-    const { type, info } = note
+export function NotePreview({ note, style, onTogglePin }) {
+    const { type, info, isPinned } = note
     const DynamicCmp = dynamicCmps[type]
     if (!DynamicCmp || !info) return null
 
     return (
         <article className="note-preview" style={style}>
-            {DynamicCmp && <DynamicCmp info={info} />}
+            <header className="note-header">
+                <h2>{info.title || ''}</h2>
+                <button className="pin-btn" onClick={() => onTogglePin(note.id)}>
+                    {isPinned ? '📌' : '📍'}
+                </button>
+            </header>
+            <DynamicCmp info={info} />
         </article>
     )
 }
