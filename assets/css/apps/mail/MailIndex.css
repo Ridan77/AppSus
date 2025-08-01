@@ -1,29 +1,36 @@
-.mail-index{
-    background-color: var(--bg5);
-    min-height: 80vh;
+.mail-index {
+  background-color: var(--bg5);
+  min-height: 80vh;
 }
 
-.newmail-filter-container{
-display: flex;
-align-items: center;
+.newmail-filter-container {
+  position: fixed;
+  top: 55px;
+  display: flex;
+  align-items: center;
+  width:100%;
+  background-color: var(--white);
+   isolation: isolate;
 }
 
-
-
-.newmail-filter-container button{
-    background-color: var(--bg6);
-    margin: 10px;
-    width: 100px;
-    height: 56px;
-    border-radius: 16px;
-    border: none
-    ;
-
-
+.newmail-filter-container button {
+  background-color: var(--bg6);
+  margin: 10px;
+  width: 155px;
+  height: 56px;
+  border-radius: 16px;
+  border: none;
+  font-family: Roboto-Bold;
+  font-size: 1em;
 }
 
-.list-sidenav-container{
-display: grid;
-grid-template-columns: 150px 1fr;
-margin-top: 20px;
- }
+.list-sidenav-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 100px;
+}
+
+.folder-container {
+  position: fixed;
+  width: 200px;
+}
