@@ -26,6 +26,10 @@ export function NoteFilter({ filterBy, onSetFilterBy }) {
 
     return (
         <section className="note-filter-container">
+
+            <div className="filters-title">
+                Get Your Notes Filtered!
+            </div>
             
             <div className="search-input">
                 <input

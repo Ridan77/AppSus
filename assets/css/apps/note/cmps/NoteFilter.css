@@ -5,45 +5,59 @@
     left: 0;
     top: 60px;
     height: calc(100vh - 60px);
-    width: 160px;
-    padding: 1rem;
+    width: 250px;
     background-color: var(--white);
-    border-right: 1px solid var(--gray1);
-    z-index: 10;
+    border-right: 2px dotted var(--bg1);
+}
+
+.filters-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    padding: 10px;
+    margin-top: 1.5rem;
+    color: var(--bg2);
 }
 
 .side-menu {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
 .side-menu button {
-    padding: 8px 12px;
-    border: 1px solid var(--gray1);
-    border-radius: 6px;
+    width: 100%;
+    border: none;
     background-color: var(--white);
     cursor: pointer;
-    transition: background-color 0.3s;
+    padding: 20px;
+    margin-top: 1.5rem;
+    transition: background-color 300ms;
 }
 
 .side-menu button:hover {
-    background-color: var(--gray0);
+    background-color: rgba(173, 216, 230, 0.5);
 }
 
 .side-menu button.active {
-    background-color: var(--gray1);
+    background-color: var(--bg1);
     color: white;
 }
 
 .search-input {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 }
 
 .search-input input {
-    padding: 10px 14px;
-    border: 1px solid var(--gray1);
+    padding: 10px 0 10px 20px;
+    border: none;
     border-radius: 8px;
     font-size: 1rem;
-    width: 100%;
+    width: calc(100% - 20px);
+}
+
+.search-input input:focus {
+    outline: none;
 }
