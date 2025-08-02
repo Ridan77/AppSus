@@ -17,6 +17,7 @@ export function MailEdit() {
   const [searchParams, setSearchParams] = useSearchParams();
   const params = useParams();
   const noteTxt = mailService.getFilterFromSearchParams(searchParams).txt;
+  const noteSubject = mailService.getFilterFromSearchParams(searchParams).subject;
   const { mailId } = params;
 
   const navigate = useNavigate();
@@ -29,11 +30,8 @@ export function MailEdit() {
 
   useEffect(()=>{
     if (noteTxt) {
-      setSearchParams({});
-      console.log("before", noteTxt);
-      
-      console.log(mailToEdit)
-      setMailToEdit((prevMailToEdit)=>({...prevMailToEdit,body:noteTxt}));
+      setSearchParams({});      
+      setMailToEdit((prevMailToEdit)=>({...prevMailToEdit,body:noteTxt,subject:noteSubject}));
     }
 
   },[noteTxt])

@@ -1,4 +1,8 @@
 import { mailService } from "../services/mail.service.js";
+import {
+  showErrorMsg,
+  showSuccessMsg,
+} from "../../../services/event-bus.service.js";
 
 const { useParams, useNavigate, Link } = ReactRouterDOM;
 
@@ -23,6 +27,14 @@ export function MailDetails() {
       .finally(() => setIsLoading(false));
   }
 
+  function onRemoveMail(mail) {
+    mailService.moveToTrash(mail)
+    .then(() => {
+      showSuccessMsg("Email moved to Trash");
+      navigate("/mail");
+    });
+  }
+
   function onBack() {
     navigate("/mail");
   }
@@ -39,19 +51,21 @@ export function MailDetails() {
           </button>
 
           <button className="prev-mail">
-            <Link to={`/mail/${mail.prevMailId}`}></Link>{" "}
-            <i className="fa-solid fa-backward-step "></i>
+            <Link to={`/mail/${mail.prevMailId}`}>
+              <i className="fa-solid fa-backward-step "></i>
+            </Link>
           </button>
 
           <button className="next-mail">
             <Link to={`/mail/${mail.nextMailId}`}>
-              {" "}
               <i className="fa-solid fa-forward-step "></i>
             </Link>
           </button>
 
           <button>
-            <i className="fa-solid fa-envelope-open "></i>
+            <Link to={`/note/?subject=${subject}&body=${body}`}>
+              <i className="fa-solid fa-arrow-up-right-from-square"></i>
+            </Link>
           </button>
           <button onClick={onBack}>
             <i className="fa-solid fa-trash "></i>
