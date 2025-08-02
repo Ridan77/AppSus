@@ -64,4 +64,14 @@
   body.menu-open .home {
     margin-top: 150px;
   }
+
+  body.menu-open .home-box {
+    margin: 170px auto;
+     min-height: 35em;
+  }
+
+  body.menu-open .about {
+    margin-top: 170px;
+     min-height: 35em;
+  }
 }
