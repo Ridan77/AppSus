@@ -7,7 +7,7 @@ export function About() {
         <h2>By:</h2>
         <div className="img-about">
           <img src="../assets/img/dan.jpg" alt=""  />
-          <img src="/AppSuS/assets/img/ohad.jpg" alt=""  />
+          <img src="/AppSus/assets/img/ohad.jpg" alt=""  />
 
         </div>
         <div className="name-box">
