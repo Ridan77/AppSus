@@ -13,7 +13,6 @@ export function MailDetails() {
   const [isLoading, setIsLoading] = useState(true);
   const params = useParams();
   const navigate = useNavigate();
-  console.log("in details");
   useEffect(() => {
     loadMail();
   }, [params.mailId]);

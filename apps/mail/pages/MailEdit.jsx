@@ -80,7 +80,6 @@ export function MailEdit() {
 
   const loadingClass = isLoading ? "loading" : "";
   const { from, to, subject, body, createdAt } = mailToEdit;
-  console.log("body", body);
   return (
     <section className={"mail-edit " + loadingClass}>
       <header>

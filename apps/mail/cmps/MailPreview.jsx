@@ -4,7 +4,6 @@ export function MailPreview({ mail, onToggleStarState }) {
 
   function onStarClick(ev, mail) {
     ev.stopPropagation();
-    console.log(mail.isStared);
     onToggleStarState(mail);
   }
   if (sentAt) {
