@@ -6,7 +6,7 @@ export function About() {
         <h2>A Sprint Project</h2>
         <h2>By:</h2>
         <div className="img-about">
-          <img src="../assets/img/dan.jpg" alt=""  />
+          <img src="/AppSus/assets/img/dan.jpg" alt=""  />
           <img src="/AppSus/assets/img/ohad.jpg" alt=""  />
 
         </div>

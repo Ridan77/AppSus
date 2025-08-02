@@ -13,7 +13,7 @@ export function AppHeader() {
     <header className={`app-header ${menuToggle ? "menu-open" : ""}`}>
       <Link to="/">
         <h3>
-          App Sus <img src="../assets/img/favicon-32x32.png" alt=""  />
+          App Sus <img src="/AppSus/assets/img/favicon-32x32.png" alt=""  />
         </h3>
       </Link>
       <div className="header-items">
