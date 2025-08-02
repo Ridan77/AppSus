@@ -1,6 +1,9 @@
+
+
 .mail-search-filter-container .search-input{
 height: 54px;
 margin-left: 20px;
+margin-top: auto;
 border-radius: 24px;
 background-color: var(--readitem);
 border: none;

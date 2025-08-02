@@ -1,4 +1,4 @@
-const { , NavLink } = ReactRouterDOM;
+const {  NavLink } = ReactRouterDOM;
 
 export function Home() {
   return (

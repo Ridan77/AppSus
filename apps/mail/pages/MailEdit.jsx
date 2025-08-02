@@ -15,9 +15,8 @@ export function MailEdit() {
   const { onUpdateMail } = useOutletContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const params = useParams();
-  const noteTxt = mailService.getFilterFromSearchParams(searchParams).txt;
-  const noteSubject =
-    mailService.getFilterFromSearchParams(searchParams).subject;
+  const noteTxt = mailService.getFilterFromSearchParams(searchParams).body;
+  const noteSubject = mailService.getFilterFromSearchParams(searchParams).subject;
   const { mailId } = params;
 
   const navigate = useNavigate();
