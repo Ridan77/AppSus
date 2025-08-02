@@ -1,0 +1,153 @@
+
+@media (max-width: 1800px) and (min-width: 1600px) {
+
+    .note-list {
+        margin-right: 50px;
+    }
+}
+
+@media (max-width: 1600px) {
+
+    .note-list {
+        margin-right: 50px;
+    }
+
+    .note-filter-container {
+        width: 150px !important;
+    }
+}
+
+@media (max-width: 1485px) {
+
+    .note-list{
+        max-width: 1100px;
+        columns: 200px;
+    }
+
+    .note-list li {
+        width: 200px;
+    }
+
+    .note-card img{
+        width: 200px !important;
+    }
+
+}
+
+@media (max-width: 1320px) {
+
+    .note-list{
+        max-width: 1000px;
+        columns: 170px;
+    }
+
+    .note-list li {
+        width: 170px;
+    }
+
+    .note-card img{
+        width: 170px !important;
+    }
+}
+
+@media (max-width: 1220px) {
+
+    .note-list{
+        max-width: 900px;
+        columns: 150px;
+    }
+
+    .note-list li {
+        width: 150px;
+    }
+
+    .note-card img{
+        width: 150px !important;
+    }
+}
+
+@media (max-width: 1120px) {
+
+    .note-list{
+        max-width: 800px;
+        columns: 130px;
+    }
+
+    .note-list li {
+        width: 130px;
+    }
+
+    .note-card img{
+        width: 130px !important;
+    }
+
+    .handle-note-btns button {
+        font-size: 11px;
+    }
+
+    .handle-note-btns {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 1020px) {
+
+    .note-list{
+        max-width: 700px;
+        columns: 120px;
+    }
+
+    .note-list li {
+        width: 120px;
+    }
+
+    .note-card img{
+        width: 120px !important;
+    }
+
+    .note-header h2{
+        font-size: 18px;
+    }
+
+}
+
+@media (max-width: 930px) {
+
+    .note-add-container {
+        margin: 80px 0 50px 100px; 
+    }
+
+    .note-add-container form{
+        width: 400px;
+    }
+
+    .search-input input{
+        font-size: 12px !important;
+        padding: 2px !important;
+
+    }
+
+    .note-list{
+        max-width: 600px;
+        columns: 110px;
+    }
+
+    .note-list li {
+        width: 135px;
+    }
+
+    .note-card img{
+        width: 135px !important;
+    }
+
+    .note-filter-container {
+        width: 100px !important;
+    }
+}
+
+@media (max-width: 770px) {
+
+    .note-filter-container {
+        display: none !important;
+    }
+}

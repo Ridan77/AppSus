@@ -62,44 +62,146 @@ function _createNotes() {
     if (!notes || !notes.length) {
         notes = [
             {
-                id: 'n101',
-                createdAt: 1112222,
+                id: 'n201',
+                createdAt: 1627891234567,
                 type: 'NoteTxt',
                 isPinned: true,
-                style: {
-                    backgroundColor: '#1A73E8'
-                },
                 info: {
-                    txt: 'Fullstack Me Baby!'
+                    title: 'Grocery List',
+                    txt: 'Milk, Bread, Eggs, Coffee'
+                },
+                style: {
+                    backgroundColor: '#FFEB3B'
                 }
             },
             {
-                id: 'n102',
-                createdAt: 1112223,
+                id: 'n202',
+                createdAt: 1627892234567,
                 type: 'NoteImg',
                 isPinned: false,
                 info: {
-                    url: 'http://some-img/me',
-                    title: 'Bobi and Me'
+                    title: 'Sunset at the beach',
+                    url: 'https://picsum.photos/300/200?random=1'
                 },
                 style: {
-                    backgroundColor: '#1A73E8'
+                    backgroundColor: '#E1BEE7'
                 }
             },
             {
-                id: 'n103',
-                createdAt: 1112224,
+                id: 'n203',
+                createdAt: 1627893234567,
                 type: 'NoteTodos',
                 isPinned: false,
                 info: {
-                    title: 'Get my stuff together',
+                    title: 'Workout Goals',
                     todos: [
-                        { txt: 'Driving license', doneAt: null },
-                        { txt: 'Coding power', doneAt: 187111111 }
+                        { txt: 'Run 5km', doneAt: null },
+                        { txt: 'Stretch', doneAt: 1627893234000 }
                     ]
+                },
+                style: {
+                    backgroundColor: '#C8E6C9'
+                }
+            },
+            {
+                id: 'n204',
+                createdAt: 1627894234567,
+                type: 'NoteTxt',
+                isPinned: false,
+                info: {
+                    title: 'Project Ideas',
+                    txt: 'Build a recipe app with React'
+                },
+                style: {
+                    backgroundColor: '#FFF9C4'
+                }
+            },
+            {
+                id: 'n205',
+                createdAt: 1627895234567,
+                type: 'NoteImg',
+                isPinned: true,
+                info: {
+                    title: 'Cool Architecture',
+                    url: 'https://picsum.photos/300/200?random=2'
+                },
+                style: {
+                    backgroundColor: '#FFCDD2'
+                }
+            },
+            {
+                id: 'n206',
+                createdAt: 1627896234567,
+                type: 'NoteTodos',
+                isPinned: true,
+                info: {
+                    title: 'Weekend Prep',
+                    todos: [
+                        { txt: 'Clean kitchen', doneAt: null },
+                        { txt: 'Buy groceries', doneAt: null }
+                    ]
+                },
+                style: {
+                    backgroundColor: '#D1C4E9'
+                }
+            },
+            {
+                id: 'n207',
+                createdAt: 1627897234567,
+                type: 'NoteTxt',
+                isPinned: false,
+                info: {
+                    title: 'Meeting Notes',
+                    txt: 'Discuss Q3 goals and priorities'
+                },
+                style: {
+                    backgroundColor: '#B3E5FC'
+                }
+            },
+            {
+                id: 'n208',
+                createdAt: 1627898234567,
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    title: 'Mountain Hike',
+                    url: 'https://picsum.photos/300/200?random=3'
+                },
+                style: {
+                    backgroundColor: '#F0F4C3'
+                }
+            },
+            {
+                id: 'n209',
+                createdAt: 1627899234567,
+                type: 'NoteTodos',
+                isPinned: false,
+                info: {
+                    title: 'Study Plan',
+                    todos: [
+                        { txt: 'Math exercises', doneAt: null },
+                        { txt: 'Read JS book', doneAt: null }
+                    ]
+                },
+                style: {
+                    backgroundColor: '#FFE0B2'
+                }
+            },
+            {
+                id: 'n210',
+                createdAt: 1627900234567,
+                type: 'NoteTxt',
+                isPinned: true,
+                info: {
+                    title: 'Birthday Thoughts',
+                    txt: 'Plan something special for mom!'
+                },
+                style: {
+                    backgroundColor: '#DCEDC8'
                 }
             }
         ]
+
         saveToStorage(NOTE_KEY, notes)
     }
 }

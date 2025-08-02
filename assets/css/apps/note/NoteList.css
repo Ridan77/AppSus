@@ -5,7 +5,7 @@
     list-style: none;
     column-gap: 15px;
     margin: auto;
-    /*height: 100vh;*/
+    height: 100vh;
 }
 
 ul {
@@ -32,6 +32,7 @@ ul {
 
 .handle-note-btns {
     display: flex;
+    align-items: center;
     margin-top: auto;
     justify-content: space-around;
     width: 100%;
@@ -44,6 +45,7 @@ ul {
     background-color: transparent;
     transition: 300ms;
 }
+
 
 .handle-note-btns button:hover {
     cursor: pointer;
