@@ -108,11 +108,11 @@ export function NoteAdd({ onAddNote }) {
                 )}
 
                 <section className="handle-note-type">
-                    <button type="button" onClick={() => handleTypeSelect('NoteTxt')}>T</button>
-                    <button type="button" onClick={() => handleTypeSelect('NoteImg')}>I</button>
-                    <button type="button" onClick={() => handleTypeSelect('NoteVideo')}>V</button>
-                    <button type="button" onClick={() => handleTypeSelect('NoteTodos')}>L</button>
-                    {noteToAdd.type && <button className="add-note-btn" type="submit">Add</button>}
+                    <button type="button" onClick={() => handleTypeSelect('NoteTxt')}><i className="fa-solid fa-font"></i></button>
+                    <button type="button" onClick={() => handleTypeSelect('NoteImg')}><i className="fa-solid fa-image"></i></button>
+                    <button type="button" onClick={() => handleTypeSelect('NoteVideo')}><i className="fa-solid fa-video"></i></button>
+                    <button type="button" onClick={() => handleTypeSelect('NoteTodos')}><i className="fa-solid fa-list"></i></button>
+                    {noteToAdd.type && <button className="add-note-btn" type="submit"><i className="fa-solid fa-plus"></i></button>}
                 </section>
 
             </form>

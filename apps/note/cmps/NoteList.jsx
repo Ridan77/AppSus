@@ -30,12 +30,12 @@ export function NoteList({ notes, onRemoveNote, onEditNote, onChangeNoteColor, o
                     <NotePreview note={note} onTogglePin={onTogglePin} />
 
                     <section className="handle-note-btns">
-                        <button onClick={() => onRemoveNote(note.id)}>R</button>
-                        <button onClick={() => onEditNote(note)}>E</button>
-                        <button onClick={() => onDuplicateNote(note)}>D</button>
+                        <button onClick={() => onRemoveNote(note.id)}><i className="fa-solid fa-trash"></i></button>
+                        <button onClick={() => onEditNote(note)}><i className="fa-solid fa-pen-to-square"></i></button>
+                        <button onClick={() => onDuplicateNote(note)}><i className="fa-solid fa-clone"></i></button>
 
                         <div className="color-picker">
-                            <button onClick={() => toggleDropdown(note.id)}>🎨</button>
+                            <button onClick={() => toggleDropdown(note.id)}><i className="fa-solid fa-palette"></i></button>
 
                             {openDropdownId === note.id && (
                                 <div className="color-dropdown">

@@ -14,7 +14,7 @@
     border: 1px solid transparent;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    width: 500px;
+    width: 600px;
 }
 
 .note-add-container input {
@@ -43,9 +43,10 @@
 }
 
 .note-add-container .handle-note-type button {
-    background-color: transparent;
     border: none;
+    padding: 8px;
     border-radius: 50%;
+    background-color: transparent;
     transition: 300ms;
 }
 
@@ -53,4 +54,6 @@
     cursor: pointer;
     background-color: rgba(87, 87, 87, 0.18);
 }
+
+
 

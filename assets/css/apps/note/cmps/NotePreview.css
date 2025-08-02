@@ -11,3 +11,7 @@
     cursor: pointer;
     font-size: 1em;
 }
+
+.fa-thumbtack::before {
+    color: var(--gray3);
+}

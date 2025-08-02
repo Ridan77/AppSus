@@ -11,6 +11,7 @@
 ul {
     margin-block-end: 0;
     margin-block-start: 0;
+    padding-inline-start: 0;
 }
 
 .note-list li {
@@ -25,6 +26,7 @@ ul {
     break-inside: avoid;
     width: 240px;
     margin-bottom: 15px;
+    padding-bottom: 6px;
     transition: 300ms;
 }
 
@@ -48,6 +50,9 @@ ul {
     background-color: rgba(87, 87, 87, 0.18);
 }
 
+.handle-note-btns .fa-solid::before {
+    color: var(--gray6);
+}
 
 
 .note-list li:hover {

@@ -23,7 +23,7 @@ export function NotePreview({ note, style, onTogglePin }) {
             <header className="note-header">
                 <h2>{info.title || ''}</h2>
                 <button className="pin-btn" onClick={() => onTogglePin(note.id)}>
-                    {isPinned ? '📌' : '📍'}
+                    {isPinned ? <i className="fa-solid fa-thumbtack"></i> : <i className="fa-solid fa-map-pin"></i>}
                 </button>
             </header>
             <DynamicCmp info={info} />
