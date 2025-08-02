@@ -7,6 +7,7 @@
   text-align: center;
   background-color: var(--bg6);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: var(--shortdelay);
 }
 
 .home-box .logo-box {
@@ -19,12 +20,13 @@
   width: 100px;
 }
 
-.home-box h2, h3{
+.home-box h2,
+h3 {
   margin-bottom: 20px;
 }
 
 .link-box {
-  width: 300px;
+  width: 350px;
   margin: 120px auto;
   display: flex;
   justify-content: space-between;
@@ -33,7 +35,7 @@
   background-color: inherit;
   width: 100px;
   height: 40px;
-  border-radius: 1em;
+  border-radius: 1.5em;
   border: none;
   border: 1px solid var(--gray2);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);

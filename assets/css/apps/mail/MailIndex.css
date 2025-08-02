@@ -38,6 +38,6 @@
   transition: var(--shortdelay);
 }
 .newmail-filter-container i::before {
-  color: black;
+  color: var(--black);
   margin-right: 10px;
 }

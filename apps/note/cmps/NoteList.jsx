@@ -37,7 +37,9 @@ export function NoteList({ notes, onRemoveNote, onEditNote, onChangeNoteColor, o
                         <button onClick={() => onEditNote(note)}><i className="fa-solid fa-pen-to-square"></i></button>
                         <button onClick={() => onDuplicateNote(note)}><i className="fa-solid fa-clone"></i></button>
                         {note.type === 'NoteTxt' && (
-                            <Link to={`/mail/edit/?subject=${note.info.title || ''}&txt=${note.info.txt || ''}`}>
+                            <Link
+                                to={`/mail/edit/?subject=${note.info.title || ''}&body=${note.info.txt || ''}`}
+                            >
                                 <i className="fa-solid fa-envelope"></i>
                             </Link>
                         )}

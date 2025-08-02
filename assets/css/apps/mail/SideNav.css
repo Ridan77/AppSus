@@ -10,10 +10,7 @@
   font-size: 1em;
   border-top-right-radius: 1.2em;
   border-bottom-right-radius: 1.2rem;
-
-  /* border-radius: 1em; */
   width: 100%;
-
 }
 
 .sidebar-container button:hover {
@@ -22,5 +19,5 @@
 }
 
 .selected-folder {
-  background-color: var(--bg1) !important
+  background-color: var(--bg1) !important;
 }

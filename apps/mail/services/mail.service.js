@@ -23,17 +23,6 @@ export const mailService = {
     moveToTrash,
 }
 
-
-const filterBy = {
-    status: 'inbox/sent/trash/draft',
-    txt: 'puki', // no need to support complex text search 
-    isRead: true,   // (optional property, if missing: show all) 
-    isStared: true, // (optional property, if missing: show all) 
-    lables: ['important', 'romantic'] // has any of the labels 
-}
-
-
-
 function query(filterBy = {}) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
@@ -72,8 +61,6 @@ function query(filterBy = {}) {
         })
 }
 
-
-
 function get(mailId) {
     return storageService.get(MAIL_KEY, mailId).then(_setNextPrevMailId)
 }
@@ -110,8 +97,6 @@ function getDefaultFilter() {
     return { txt: '', Body: '' }
 }
 
-
-
 function _createMails() {
     let mails = utilService.loadFromStorage(MAIL_KEY) || []
     if (!mails || !mails.length) {
@@ -120,20 +105,20 @@ function _createMails() {
     }
 }
 
-
 function getFilterFromSearchParams(searchParams) {
     const txt = searchParams.get('txt') || ''
     const folder = searchParams.get('folder') || ''
     const createdAt = searchParams.get('createdAt') || ''
-    const subject= searchParams.get('subject') || ''
+    const subject = searchParams.get('subject') || ''
+    const body = searchParams.get('body') || ''
     return {
         txt,
         folder,
         createdAt,
-        subject
+        subject,
+        body
     }
 }
-
 
 
 function _setNextPrevMailId(mail) {
@@ -162,8 +147,6 @@ function moveToTrash(mail) {
     return save(mail)
 
 }
-
-
 
 function _mockData() {
     return [
@@ -427,7 +410,7 @@ function _mockData() {
             isStared: false
 
         },
-                {
+        {
             id: utilService.makeId(),
             createdAt: 1651373930500,
             subject: 'Welcome to AppSus!',
@@ -467,7 +450,7 @@ function _mockData() {
             id: utilService.makeId(),
             createdAt: 1651409930500,
             subject: 'Movie night',
-            body: 'Want to watch a movie tonight? Popcorn’s on me.',
+            body: 'Want to watch a movie tonight? Popcorns on me.',
             isRead: false,
             sentAt: null,
             removedAt: null,
@@ -491,7 +474,7 @@ function _mockData() {
             id: utilService.makeId(),
             createdAt: 1651433930500,
             subject: 'Book Club Reminder',
-            body: 'Don’t forget our book club meeting Thursday evening.',
+            body: 'Dont forget our book club meeting Thursday evening.',
             isRead: false,
             sentAt: 1651433930594,
             removedAt: null,
@@ -527,7 +510,7 @@ function _mockData() {
             id: utilService.makeId(),
             createdAt: 1651469930500,
             subject: 'Your resume was received',
-            body: 'Thank you for applying. We’ll be in touch shortly.',
+            body: 'Thank you for applying. Well be in touch shortly.',
             isRead: true,
             sentAt: 1651469930594,
             removedAt: null,
@@ -598,8 +581,8 @@ function _mockData() {
         {
             id: utilService.makeId(),
             createdAt: 1651541930500,
-            subject: 'We’ve missed you!',
-            body: 'Here’s 20% off your next order — come back soon.',
+            subject: 'Weve missed you!',
+            body: 'Heres 20% off your next order — come back soon.',
             isRead: true,
             sentAt: 1651541930594,
             removedAt: null,
@@ -659,7 +642,7 @@ function _mockData() {
             id: utilService.makeId(),
             createdAt: 1651601930500,
             subject: 'Coffee catch-up?',
-            body: 'Free this week to catch up? Let’s grab coffee.',
+            body: 'Free this week to catch up? Lets grab coffee.',
             isRead: false,
             sentAt: null,
             removedAt: null,
@@ -707,7 +690,7 @@ function _mockData() {
             id: utilService.makeId(),
             createdAt: 1651649930500,
             subject: 'LinkedIn invite',
-            body: 'I just sent you an invite on LinkedIn. Let’s connect!',
+            body: 'I just sent you an invite on LinkedIn. Lets connect!',
             isRead: false,
             sentAt: 1651649930594,
             removedAt: null,
@@ -743,7 +726,7 @@ function _mockData() {
             id: utilService.makeId(),
             createdAt: 1651685930500,
             subject: 'Welcome to the team!',
-            body: 'We’re excited to have you onboard. Here’s what to do next.',
+            body: 'Were excited to have you onboard. Heres what to do next.',
             isRead: true,
             sentAt: 1651685930594,
             removedAt: null,
@@ -755,7 +738,7 @@ function _mockData() {
             id: utilService.makeId(),
             createdAt: 1651697930500,
             subject: 'Out of Office',
-            body: 'I’m currently out of office and will reply next week.',
+            body: 'Im currently out of office and will reply next week.',
             isRead: false,
             sentAt: 1651697930594,
             removedAt: null,
@@ -767,7 +750,7 @@ function _mockData() {
             id: utilService.makeId(),
             createdAt: 1651709930500,
             subject: 'Thanks for your help!',
-            body: 'Couldn’t have done it without you — much appreciated.',
+            body: 'Couldnt have done it without you — much appreciated.',
             isRead: true,
             sentAt: 1651709930594,
             removedAt: null,

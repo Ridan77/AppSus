@@ -6,7 +6,6 @@
   --bg4: #f0f4f9;
   --bg5: #fff;
   --bg6: #a8c7fa;
-  --black: black;
 
   --color1: rgba(120, 178, 255, 0.8);
   --color2: rgba(137, 255, 173, 0.8);
@@ -21,7 +20,9 @@
   --gray5: #dddfd9;
   --gray6: #888888;
 
+  --black: black;
   --white: #ffffff;
-  --shortdelay: 0.3s;
   --readitem: #f2f6fc;
+
+  --shortdelay: 0.3s;
 }

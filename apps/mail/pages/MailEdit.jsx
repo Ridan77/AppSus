@@ -3,7 +3,6 @@ import {
   showErrorMsg,
   showSuccessMsg,
 } from "../../../services/event-bus.service.js";
-import { utilService } from "../../../services/util.service.js";
 const { useEffect } = React;
 const { useNavigate, useParams, useSearchParams, Link, useOutletContext } =
   ReactRouterDOM;
@@ -16,25 +15,26 @@ export function MailEdit() {
   const { onUpdateMail } = useOutletContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const params = useParams();
-  const noteTxt = mailService.getFilterFromSearchParams(searchParams).txt;
+  const noteTxt = mailService.getFilterFromSearchParams(searchParams).body;
   const noteSubject = mailService.getFilterFromSearchParams(searchParams).subject;
   const { mailId } = params;
 
   const navigate = useNavigate();
 
-
   useEffect(() => {
     if (mailId && !noteTxt) loadMail();
-
   }, [mailId]);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (noteTxt) {
-      setSearchParams({});      
-      setMailToEdit((prevMailToEdit)=>({...prevMailToEdit,body:noteTxt,subject:noteSubject}));
+      setSearchParams({});
+      setMailToEdit((prevMailToEdit) => ({
+        ...prevMailToEdit,
+        body: noteTxt,
+        subject: noteSubject,
+      }));
     }
-
-  },[noteTxt])
+  }, [noteTxt]);
 
   function loadMail() {
     setIsLoading(true);
@@ -80,7 +80,6 @@ export function MailEdit() {
 
   const loadingClass = isLoading ? "loading" : "";
   const { from, to, subject, body, createdAt } = mailToEdit;
-  console.log('body',body)
   return (
     <section className={"mail-edit " + loadingClass}>
       <header>

@@ -7,24 +7,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding: 1em; */
   background: var(--bg1);
- transition: var(--shortdelay);
+  transition: var(--shortdelay);
 }
 
-.app-header h3{
-    margin-left: 1em;
+.app-header h3 {
+margin: auto 1em;
 }
 
-.app-header h3 img{
+.app-header h3 img {
   position: absolute;
-  width:32px;
-  
+  left :100px;
+  top: 0px;
+  object-fit: contain;
+  width: 32px;
 }
 .header-items {
   display: flex;
   align-items: center;
-margin-top: 0;
+  margin-top: 0;
 }
 
 .app-header .header-nav-bar {

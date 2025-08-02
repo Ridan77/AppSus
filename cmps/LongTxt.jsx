@@ -1,4 +1,4 @@
-const { useState, useEffect } = React;
+const { useState } = React;
 
 export function LongTxt({ txt, length = 100 }) {
   const [isLongTxt, setIsLongTxt] = useState(false);
@@ -8,9 +8,7 @@ export function LongTxt({ txt, length = 100 }) {
   }
   const isLongerThanLimit = txt.length > length;
   const textToShow =
-    isLongTxt || !isLongerThanLimit
-      ? txt
-      : txt.substring(0, length) + "...";
+    isLongTxt || !isLongerThanLimit ? txt : txt.substring(0, length) + "...";
 
   return (
     <section className="long-txt">

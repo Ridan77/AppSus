@@ -27,7 +27,7 @@
 
 .mail-edit form {
   display: grid;
-  grid-template-columns:  1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 20px 20px 20px 1fr 60px;
   align-items: start;
   font-size: 1rem;
@@ -60,7 +60,6 @@
 }
 
 .mail-edit form .body-input {
-
   border: none;
   height: 280px;
   font-family: Roboto;
