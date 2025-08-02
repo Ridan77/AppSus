@@ -28,8 +28,7 @@ export function MailDetails() {
   }
 
   function onRemoveMail(mail) {
-    mailService.moveToTrash(mail)
-    .then(() => {
+    mailService.moveToTrash(mail).then(() => {
       showSuccessMsg("Email moved to Trash");
       navigate("/mail");
     });
@@ -67,7 +66,7 @@ export function MailDetails() {
               <i className="fa-solid fa-arrow-up-right-from-square"></i>
             </Link>
           </button>
-          <button onClick={onBack}>
+          <button onClick={() => onRemoveMail(mail)}>
             <i className="fa-solid fa-trash "></i>
           </button>
         </div>

@@ -1,40 +1,45 @@
 export function SideNav({ unreadCount, onSetFilterBy, filterBy }) {
-    function onClickFolder(folder) {
+  function onClickFolder(folder) {
     filterBy.folder = folder;
     onSetFilterBy(filterBy);
   }
-const folder=filterBy.folder
+  const folder = filterBy.folder;
   return (
     <div className="sidebar-container">
-      <button className={folder==='inbox' ? 'selected-folder' : ''}
+      <button
+        className={folder === "inbox" ? "selected-folder" : ""}
         onClick={() => {
           onClickFolder("inbox");
         }}>
-        Inbox ({unreadCount})
+        Inbox {folder === "inbox" ? `(${unreadCount})` : ""}
       </button>
-      <button className={folder==='starred' ? 'selected-folder' : ''}
+      <button
+        className={folder === "starred" ? "selected-folder" : ""}
         onClick={() => {
           onClickFolder("starred");
         }}>
-        Starred
+        Starred {folder === "starred" ? `(${unreadCount})` : ""}
       </button>
-      <button className={folder==='sent' ? 'selected-folder' : ''}
+      <button
+        className={folder === "sent" ? "selected-folder" : ""}
         onClick={() => {
           onClickFolder("sent");
         }}>
-        Sent
+        Sent {folder === "sent" ? `(${unreadCount})` : ""}
       </button>
-      <button className={folder==='draft' ? 'selected-folder' : ''}
+      <button
+        className={folder === "draft" ? "selected-folder" : ""}
         onClick={() => {
           onClickFolder("draft");
         }}>
-        Draft
+        Draft {folder === "draft" ? `(${unreadCount})` : ""}
       </button>
-      <button className={folder==='trash' ? 'selected-folder' : ''}
+      <button
+        className={folder === "trash" ? "selected-folder" : ""}
         onClick={() => {
           onClickFolder("trash");
         }}>
-        Trash
+        Trash {folder === "trash" ? `(${unreadCount})` : ""}
       </button>
     </div>
   );

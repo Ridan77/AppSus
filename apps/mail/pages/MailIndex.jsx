@@ -40,7 +40,7 @@ export function MailIndex() {
     if (mail.removedAt) removeMail(mail.id);
     else {
       mailService.moveToTrash(mail).then((newMail) => {
-        showSuccessMsg('Email moved to Trash')
+        showSuccessMsg("Email moved to Trash");
         onUpdateMail(newMail);
       });
     }
@@ -93,7 +93,10 @@ export function MailIndex() {
     <section className="mail-index">
       <section className="newmail-filter-container">
         <button>
-          <Link to="/mail/edit"> <i className="fa-solid fa-pen"></i> Compose</Link>
+          <Link to="/mail/edit">
+            {" "}
+            <i className="fa-solid fa-pen"></i> Compose
+          </Link>
         </button>
         <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
       </section>
@@ -113,7 +116,7 @@ export function MailIndex() {
           />
         </section>
       </section>
-      <Outlet context={{onUpdateMail}}/>
+      <Outlet context={{ onUpdateMail }} />
     </section>
   );
 }

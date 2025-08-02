@@ -1,7 +1,12 @@
-const { Link, useNavigate } = ReactRouterDOM;
+const { useNavigate } = ReactRouterDOM;
 import { MailPreview } from "../cmps/MailPreview.jsx";
 
-export function MailList({ onRemoveMail, onToggleReadState, mails,onToggleStarState }) {
+export function MailList({
+  onRemoveMail,
+  onToggleReadState,
+  mails,
+  onToggleStarState,
+}) {
   const unReadClass = "fa-solid fa-envelope-open";
   const readClass = "fa-solid fa-envelope";
   const navigate = useNavigate();
@@ -33,7 +38,7 @@ export function MailList({ onRemoveMail, onToggleReadState, mails,onToggleStarSt
               }}>
               <i className={mail.isRead ? readClass : unReadClass}></i>
             </button>
-               </div>
+          </div>
         </li>
       ))}
     </ul>

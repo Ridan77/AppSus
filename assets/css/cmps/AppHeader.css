@@ -7,14 +7,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding: 1em; */
   background: var(--bg1);
   transition: var(--shortdelay);
 }
 
 .app-header h3 {
 margin: auto 1em;
-  /* margin-left: 1em; */
 }
 
 .app-header h3 img {

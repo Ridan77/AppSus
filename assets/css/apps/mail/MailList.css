@@ -16,7 +16,6 @@
   border-bottom: 1px solid var(--grey4);
 }
 
-
 .mail-index .list-container .btn-container button {
   opacity: 0;
   transition: var(--shortdelay);

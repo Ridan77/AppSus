@@ -1,5 +1,5 @@
 const { Link, NavLink } = ReactRouterDOM;
-const { useState, useEffect } = React;
+const { useState } = React;
 
 export function AppHeader() {
   const [menuToggle, setMenuToggle] = useState(false);
@@ -12,7 +12,9 @@ export function AppHeader() {
   return (
     <header className={`app-header ${menuToggle ? "menu-open" : ""}`}>
       <Link to="/">
-        <h3>App Sus <img src="../assets/img/favicon-32x32.png" alt="" srcset="" /></h3>
+        <h3>
+          App Sus <img src="../assets/img/favicon-32x32.png" alt="" srcset="" />
+        </h3>
       </Link>
       <div className="header-items">
         <nav className="header-nav-bar">
