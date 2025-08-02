@@ -6,9 +6,7 @@ background-color: var(--readitem);
 border: none;
 font-size: 1em;
 padding-left: 10px;
-z-index: 100;
-filter:none;
-opacity: 1;
+z-index: -10;
 }
 
 

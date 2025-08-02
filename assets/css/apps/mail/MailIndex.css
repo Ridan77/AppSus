@@ -8,9 +8,9 @@
   top: 55px;
   display: flex;
   align-items: center;
-  width:100%;
+  width: 100%;
   background-color: var(--white);
-   isolation: isolate;
+  transition: var(--shortdelay);
 }
 
 .newmail-filter-container button {
@@ -28,15 +28,16 @@
   display: grid;
   grid-template-columns: 1fr;
   margin-top: 100px;
+  transition: var(--shortdelay);
 }
 
 .folder-container {
-
   position: fixed;
-    top:130px;
+  top: 130px;
   width: 200px;
+  transition: var(--shortdelay);
 }
-.newmail-filter-container i::before{
-  color:black;
+.newmail-filter-container i::before {
+  color: black;
   margin-right: 10px;
 }
