@@ -1,0 +1,40 @@
+@media (width < 600px) {
+  
+
+.folder-container {
+
+  position: fixed;
+    top:130px;
+  width: 100px;
+}
+
+
+.list-container {
+  margin-left: 100px;
+}
+
+.mail-preview-container{
+width: 100%;
+grid-template-rows: 1fr 1fr;
+grid-template-columns:30px 1fr 70px ;
+gap: 10px;
+}
+
+.mail-index .list-container li {
+  height: 70px;
+}
+
+
+.mail-preview-container .subject-field{
+grid-column: 2;
+grid-row: 2;
+
+}
+
+.mail-preview-container .date-field{
+
+grid-column: 3;
+grid-row: 2;
+
+}
+}

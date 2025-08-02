@@ -33,7 +33,3 @@ background-color:inherit;
 border: none;
 }
 
-.star-button:not(.stared){
-/* filter: grayscale(100%); */
-/* opacity: 0.3; */
-}
