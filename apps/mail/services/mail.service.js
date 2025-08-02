@@ -125,10 +125,12 @@ function getFilterFromSearchParams(searchParams) {
     const txt = searchParams.get('txt') || ''
     const folder = searchParams.get('folder') || ''
     const createdAt = searchParams.get('createdAt') || ''
+    const subject= searchParams.get('subject') || ''
     return {
         txt,
         folder,
-        createdAt
+        createdAt,
+        subject
     }
 }
 

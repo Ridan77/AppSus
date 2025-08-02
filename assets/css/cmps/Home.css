@@ -1,0 +1,25 @@
+.home-box {
+  margin-top: 100px;
+  width: 80vw;
+  min-height: 40em;
+  padding-top: 20px;
+  border-radius: 1.5em;
+  margin: 100px auto;
+  text-align: center;
+  background-color: var(--bg6);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+}
+
+.home-box .logo-box{
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.logo-box img{
+  width: 100px;
+}
+
+.link-box
