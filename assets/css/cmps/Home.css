@@ -1,33 +1,22 @@
- /* home */
+/* home */
 
 .home {
-    background-color: var(--bg2);
+  margin-top: 70px;
+  background-color: var(--white);
+  transition: var(--shortdelay);
 }
 
-.home .box-container {
-    padding: 1em 0;
+.home .box {
+  background-color: var(--color4);
+  width: 80vw;
+  min-height: 40em;
+  text-align: center;
+  margin: auto;
+  padding-top: 20px;
+  margin-top: 20px;
+  
 }
 
-.home .box1 {
-    background-color: var(--color1);
-    min-height: 10em;
-}
-
-.home .box2 {
-    background-color: var(--color2);
-    min-height: 10em;
-}
-
- @media (min-width: 750px) {
-    .home .box-container {
-        display: flex;
-        flex-direction: row-reverse;
-    }
-    .home .box1 {
-        flex: 1
-    }
-    .home .box2 {
-        width: 30vw;
-    }
-    
+.home .box h2 {
+margin-top: 20px;
 }
