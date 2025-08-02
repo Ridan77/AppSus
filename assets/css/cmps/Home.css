@@ -1,25 +1,45 @@
 .home-box {
-  margin-top: 100px;
-  width: 80vw;
+  width: 400px;
   min-height: 40em;
   padding-top: 20px;
   border-radius: 1.5em;
   margin: 100px auto;
   text-align: center;
   background-color: var(--bg6);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-.home-box .logo-box{
+.home-box .logo-box {
   margin-top: 30px;
   display: flex;
   justify-content: space-around;
-
 }
 
-.logo-box img{
+.logo-box img {
   width: 100px;
 }
 
-.link-box
+.home-box h2, h3{
+  margin-bottom: 20px;
+}
+
+.link-box {
+  width: 300px;
+  margin: 120px auto;
+  display: flex;
+  justify-content: space-between;
+}
+.link-box button {
+  background-color: inherit;
+  width: 100px;
+  height: 40px;
+  border-radius: 1em;
+  border: none;
+  border: 1px solid var(--gray2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: var(--shortdelay);
+}
+.link-box button:hover {
+  cursor: pointer;
+  background-color: var(--bg3);
+}

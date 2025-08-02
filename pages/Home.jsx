@@ -4,18 +4,17 @@ const { Link, NavLink } = ReactRouterDOM;
 export function Home() {
   return (
     <section className="home-box">
-      <h2>App Sus</h2> <h3>Inspired by </h3>
+      <h2>App Sus</h2> <h3>Inspired by: </h3>
       <div className="logo-box">
         <img src="../assets/img/gmail.png" alt=""  />
         <img src="../assets/img/google-keep.png" alt=""  />
       </div>
-      <h3>Links</h3>
       <div className="link-box">
         <button>
-          <NavLink to="/mail">Mail</NavLink>
+          <NavLink to="/mail">Mr. EMail</NavLink>
         </button>
         <button>
-          <NavLink to="/note">Note</NavLink>
+          <NavLink to="/note">Miss Keep</NavLink>
         </button>
       </div>
     </section>
