@@ -124,9 +124,11 @@ function _createMails() {
 function getFilterFromSearchParams(searchParams) {
     const txt = searchParams.get('txt') || ''
     const folder = searchParams.get('folder') || ''
+    const createdAt = searchParams.get('createdAt') || ''
     return {
         txt,
         folder,
+        createdAt
     }
 }
 

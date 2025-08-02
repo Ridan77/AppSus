@@ -3,8 +3,10 @@ import {
   showErrorMsg,
   showSuccessMsg,
 } from "../../../services/event-bus.service.js";
+import { utilService } from "../../../services/util.service.js";
 const { useEffect } = React;
-const { useNavigate, useParams, Link, useOutletContext } = ReactRouterDOM;
+const { useNavigate, useParams, useSearchParams, Link, useOutletContext } =
+  ReactRouterDOM;
 
 const { useState } = React;
 
@@ -12,14 +14,29 @@ export function MailEdit() {
   const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail());
   const [isLoading, setIsLoading] = useState(false);
   const { onUpdateMail } = useOutletContext();
+  const [searchParams, setSearchParams] = useSearchParams();
   const params = useParams();
-
+  const noteTxt = mailService.getFilterFromSearchParams(searchParams).txt;
   const { mailId } = params;
 
   const navigate = useNavigate();
+
+
   useEffect(() => {
-    if (mailId) loadMail();
+    if (mailId && !noteTxt) loadMail();
+
   }, [mailId]);
+
+  useEffect(()=>{
+    if (noteTxt) {
+      setSearchParams({});
+      console.log("before", noteTxt);
+      
+      console.log(mailToEdit)
+      setMailToEdit((prevMailToEdit)=>({...prevMailToEdit,body:noteTxt}));
+    }
+
+  },[noteTxt])
 
   function loadMail() {
     setIsLoading(true);
@@ -65,6 +82,7 @@ export function MailEdit() {
 
   const loadingClass = isLoading ? "loading" : "";
   const { from, to, subject, body, createdAt } = mailToEdit;
+  console.log('body',body)
   return (
     <section className={"mail-edit " + loadingClass}>
       <header>
@@ -78,7 +96,7 @@ export function MailEdit() {
           ✖
         </button>
         <input
-          placeHolder="From"
+          placeholder="From"
           className="from-input"
           value={from}
           onChange={handleChange}
@@ -88,7 +106,7 @@ export function MailEdit() {
         />
 
         <input
-          placeHolder="Recipients"
+          placeholder="Recipients"
           className="to-input"
           value={to}
           onChange={handleChange}
@@ -98,7 +116,7 @@ export function MailEdit() {
         />
 
         <input
-          placeHolder="Subject"
+          placeholder="Subject"
           className="subject-input"
           value={subject}
           onChange={handleChange}
