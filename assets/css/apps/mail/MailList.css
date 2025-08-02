@@ -13,7 +13,9 @@
   height: 35px;
   justify-content: space-between;
   transition: var(--shortdelay);
+  border-bottom: 1px solid var(--grey4);
 }
+
 
 .mail-index .list-container .btn-container button {
   opacity: 0;
@@ -29,10 +31,6 @@
   z-index: 10;
 }
 
-.mail-index .list-container li {
-  border-bottom: 1px solid var(--grey4);
-}
-
 .mail-index .list-container li.read {
   font-family: Roboto;
   background-color: var(--readitem);
@@ -41,9 +39,7 @@
 }
 .mail-index .list-container li:not(.read) {
   font-family: Roboto-Bold;
-
 }
-
 
 .mail-index .list-container li:hover {
   box-shadow: 1px 2px 8px var(--gray5);
@@ -61,4 +57,3 @@
 .mail-index .list-container li:hover .date-field {
   opacity: 0;
 }
-

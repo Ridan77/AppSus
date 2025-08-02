@@ -1,21 +1,80 @@
 .app-header {
-    position: fixed;
-    top:0;
-    left:0;
-    right:0;
-    display: flex;
-    justify-content: space-between;
-    padding: 1em;
-    background: var(--bg1);
+  position: fixed;
+  height: 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 1em; */
+  background: var(--bg1);
+ transition: var(--shortdelay);
+}
 
+.app-header h3{
+    margin-left: 1em;
+}
+.header-items {
+  display: flex;
+  align-items: center;
+margin-top: 0;
+}
+
+.app-header .header-nav-bar {
+  position: static;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px;
+  z-index: 100;
+  transition: var(--shortdelay);
 }
 
 nav a {
-    margin: .5em;
+  margin: 0.5em;
 }
 
 nav a.active {
-    color: var(--color1);
-    font-weight: bold;
-    text-decoration: overline;
+  color: var(--color1);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.app-header .line {
+  height: 5px;
+  width: 100%;
+  background-color: var(--black);
+  transition: var(--shortdelay);
+}
+
+.app-header .btn-toggle-menu {
+  /* display: none; */
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.app-header .hamburger-lines {
+  height: 26px;
+  width: 32px;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body.menu-open .line.line1 {
+  rotate: -45deg;
+  transform-origin: top right;
+}
+
+body.menu-open .line.line2 {
+  scale: 0;
+  opacity: 0;
+}
+
+body.menu-open .line.line3 {
+  rotate: 45deg;
+  transform-origin: bottom right;
 }
