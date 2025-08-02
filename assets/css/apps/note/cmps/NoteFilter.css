@@ -7,7 +7,6 @@
     height: calc(100vh - 60px);
     width: 250px;
     background-color: var(--white);
-    border-right: 2px dotted var(--bg1);
 }
 
 .filters-title {
@@ -30,6 +29,8 @@
 .side-menu button {
     width: 100%;
     border: none;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
     background-color: var(--white);
     cursor: pointer;
     padding: 20px;

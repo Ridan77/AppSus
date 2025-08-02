@@ -1,5 +1,7 @@
 import { NotePreview } from "./NotePreview.jsx";
+
 const { useState } = React
+const { Link } = ReactRouterDOM
 
 export function NoteList({ notes, onRemoveNote, onEditNote, onChangeNoteColor, onTogglePin, onDuplicateNote }) {
 
@@ -33,6 +35,13 @@ export function NoteList({ notes, onRemoveNote, onEditNote, onChangeNoteColor, o
                         <button onClick={() => onRemoveNote(note.id)}><i className="fa-solid fa-trash"></i></button>
                         <button onClick={() => onEditNote(note)}><i className="fa-solid fa-pen-to-square"></i></button>
                         <button onClick={() => onDuplicateNote(note)}><i className="fa-solid fa-clone"></i></button>
+                        {note.type === 'NoteTxt' && (
+                            <Link
+                                to={`/mail/edit/?txt=${encodeURIComponent(`${note.info.title || ''} - ${note.info.txt || ''}`)}`}
+                            >
+                                <i className="fa-solid fa-envelope"></i>
+                            </Link>
+                        )}
 
                         <div className="color-picker">
                             <button onClick={() => toggleDropdown(note.id)}><i className="fa-solid fa-palette"></i></button>

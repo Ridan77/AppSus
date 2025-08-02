@@ -20,6 +20,32 @@ export function NoteIndex() {
         loadNotes()
     }, [filterBy])
 
+    useEffect(() => {
+        const subject = searchParams.get('subject')
+        const body = searchParams.get('body')
+
+        if (subject && body) {
+            const newNote = {
+                type: 'NoteTxt',
+                info: {
+                    title: subject,
+                    txt: body
+                }
+            }
+            noteService.save(newNote)
+                .then(savedNote => {
+                    setNotes(prev => [...prev, savedNote])
+                    showSuccessMsg('Note received from mail!')
+                    searchParams.delete('subject')
+                    searchParams.delete('body')
+                    setSearchParams(searchParams) 
+                })
+                .catch(err => {
+                    console.error('Failed to create note from mail:', err)
+                    showErrorMsg('Could not create note from mail')
+                })
+        }
+    }, [])  
 
     function loadNotes() {
         noteService.query()
@@ -150,7 +176,7 @@ export function NoteIndex() {
             })
     }
 
-
+    
 
     if (!notes) return <div className="loader">Loading...</div>
     return (

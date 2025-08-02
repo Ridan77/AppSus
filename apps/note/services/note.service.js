@@ -57,7 +57,6 @@ function getDefaultFilter() {
 }
 
 
-
 function _createNotes() {
     let notes = loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
