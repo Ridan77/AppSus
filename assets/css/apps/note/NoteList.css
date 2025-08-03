@@ -19,6 +19,7 @@ ul {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    position: relative;
     border: 1px solid var(--gray1);
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0);
@@ -26,16 +27,26 @@ ul {
     break-inside: avoid;
     width: 240px;
     margin-bottom: 15px;
-    padding-bottom: 6px;
+    padding-bottom: 35px;
     transition: 300ms;
 }
 
 .handle-note-btns {
     display: flex;
+    position: absolute;
     align-items: center;
-    margin-top: auto;
+    bottom: 6px;
+    left: 0;
+    right: 0;
     justify-content: space-around;
-    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.note-list li:hover .handle-note-btns {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .handle-note-btns button {
